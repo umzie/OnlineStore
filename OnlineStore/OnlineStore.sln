@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineStore", "OnlineStore\OnlineStore.csproj", "{9936C6B3-38DA-4352-847A-15FA3D1C5B42}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineStore.Common", "OnlineStore.Common\OnlineStore.Common.csproj", "{E0C31B44-F3D5-4AC4-BAE4-962EAF872BDE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineStoreProvider", "OnlineStoreProvider\OnlineStoreProvider.csproj", "{5370EE3A-736B-48AE-BF24-D7E84DC020F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineStore.Contracts", "OnlineStore.Contracts\OnlineStore.Contracts.csproj", "{226D24AB-0D91-4A99-8E08-54A463A8B3D7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9936C6B3-38DA-4352-847A-15FA3D1C5B42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9936C6B3-38DA-4352-847A-15FA3D1C5B42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9936C6B3-38DA-4352-847A-15FA3D1C5B42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9936C6B3-38DA-4352-847A-15FA3D1C5B42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0C31B44-F3D5-4AC4-BAE4-962EAF872BDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0C31B44-F3D5-4AC4-BAE4-962EAF872BDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0C31B44-F3D5-4AC4-BAE4-962EAF872BDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0C31B44-F3D5-4AC4-BAE4-962EAF872BDE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5370EE3A-736B-48AE-BF24-D7E84DC020F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5370EE3A-736B-48AE-BF24-D7E84DC020F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5370EE3A-736B-48AE-BF24-D7E84DC020F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5370EE3A-736B-48AE-BF24-D7E84DC020F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{226D24AB-0D91-4A99-8E08-54A463A8B3D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{226D24AB-0D91-4A99-8E08-54A463A8B3D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{226D24AB-0D91-4A99-8E08-54A463A8B3D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{226D24AB-0D91-4A99-8E08-54A463A8B3D7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.2\lib\NET35
+	EndGlobalSection
+EndGlobal

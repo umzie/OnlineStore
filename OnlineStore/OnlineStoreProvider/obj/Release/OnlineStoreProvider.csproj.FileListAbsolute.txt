@@ -1,0 +1,17 @@
+D:\OnlineStore\OnlineStore\OnlineStoreProvider\bin\Release\OnlineStoreProvider.dll
+D:\OnlineStore\OnlineStore\OnlineStoreProvider\bin\Release\OnlineStoreProvider.pdb
+D:\OnlineStore\OnlineStore\OnlineStoreProvider\bin\Release\Newtonsoft.Json.dll
+D:\OnlineStore\OnlineStore\OnlineStoreProvider\bin\Release\OnlineStore.Common.dll
+D:\OnlineStore\OnlineStore\OnlineStoreProvider\bin\Release\OnlineStore.Contracts.dll
+D:\OnlineStore\OnlineStore\OnlineStoreProvider\bin\Release\System.Net.Http.dll
+D:\OnlineStore\OnlineStore\OnlineStoreProvider\bin\Release\System.Net.Http.Formatting.dll
+D:\OnlineStore\OnlineStore\OnlineStoreProvider\bin\Release\System.Net.Http.WebRequest.dll
+D:\OnlineStore\OnlineStore\OnlineStoreProvider\bin\Release\OnlineStore.Common.pdb
+D:\OnlineStore\OnlineStore\OnlineStoreProvider\bin\Release\OnlineStore.Contracts.pdb
+D:\OnlineStore\OnlineStore\OnlineStoreProvider\bin\Release\Newtonsoft.Json.xml
+D:\OnlineStore\OnlineStore\OnlineStoreProvider\bin\Release\System.Net.Http.xml
+D:\OnlineStore\OnlineStore\OnlineStoreProvider\bin\Release\System.Net.Http.Formatting.xml
+D:\OnlineStore\OnlineStore\OnlineStoreProvider\bin\Release\System.Net.Http.WebRequest.xml
+D:\OnlineStore\OnlineStore\OnlineStoreProvider\obj\Release\OnlineStoreProvider.csprojResolveAssemblyReference.cache
+D:\OnlineStore\OnlineStore\OnlineStoreProvider\obj\Release\OnlineStoreProvider.dll
+D:\OnlineStore\OnlineStore\OnlineStoreProvider\obj\Release\OnlineStoreProvider.pdb

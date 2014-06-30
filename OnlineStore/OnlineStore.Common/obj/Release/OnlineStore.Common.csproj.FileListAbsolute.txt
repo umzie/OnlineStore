@@ -1,0 +1,7 @@
+D:\OnlineStore\OnlineStore\OnlineStore.Common\bin\Release\OnlineStore.Common.dll
+D:\OnlineStore\OnlineStore\OnlineStore.Common\bin\Release\OnlineStore.Common.pdb
+D:\OnlineStore\OnlineStore\OnlineStore.Common\bin\Release\OnlineStore.Contracts.dll
+D:\OnlineStore\OnlineStore\OnlineStore.Common\bin\Release\OnlineStore.Contracts.pdb
+D:\OnlineStore\OnlineStore\OnlineStore.Common\obj\Release\OnlineStore.Common.csprojResolveAssemblyReference.cache
+D:\OnlineStore\OnlineStore\OnlineStore.Common\obj\Release\OnlineStore.Common.dll
+D:\OnlineStore\OnlineStore\OnlineStore.Common\obj\Release\OnlineStore.Common.pdb

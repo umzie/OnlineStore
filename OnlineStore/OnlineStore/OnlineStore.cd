@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="OnlineStore.Controllers.AccountController">
+    <Position X="0.5" Y="0.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAgAAAAACAIAAAAAABAAAAAAAQAAQAIAA=</HashCode>
+      <FileName>Controllers\AccountController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OnlineStore.Controllers.BasketController">
+    <Position X="0.5" Y="3.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAEAAAAAAIA=</HashCode>
+      <FileName>Controllers\BasketController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OnlineStore.Controllers.HomeController">
+    <Position X="4.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAEACAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\HomeController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OnlineStore.Controllers.PaymentController">
+    <Position X="9.75" Y="2.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAACAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\PaymentController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OnlineStore.Controllers.StoreController">
+    <Position X="7" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAAAAAAABAAAAAAEAAAAgAAA=</HashCode>
+      <FileName>Controllers\StoreController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OnlineStore.Models.ChangePasswordModel">
+    <Position X="6.5" Y="7" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABAAAAAAAEAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Models\AccountModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OnlineStore.Models.LoginModel">
+    <Position X="4.5" Y="2.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAQAAAAAgAAA=</HashCode>
+      <FileName>Models\AccountModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OnlineStore.Models.RegisterModel">
+    <Position X="6.5" Y="4.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAQAAAAAACAQAAIAABIAA=</HashCode>
+      <FileName>Models\AccountModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OnlineStore.Models.BasketViewModel">
+    <Position X="9.75" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAACABAAAAAAAAABAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\BasketViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OnlineStore.Models.HomeViewModel">
+    <Position X="6.75" Y="3" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\HomeViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OnlineStore.Models.ItemModel">
+    <Position X="4.5" Y="6" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAGAAAAAQAAAAAAIAAAAAAAAAAAABAAAAAAgAAAAAA=</HashCode>
+      <FileName>Models\ItemModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OnlineStore.Models.ItemViewModel">
+    <Position X="2.5" Y="6" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAQAgAAAAIAAAAIQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ItemViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OnlineStore.Models.LineItemModel">
+    <Position X="3" Y="4" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAGAAAAAQAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\LineItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OnlineStore.Models.PaymentModel">
+    <Position X="0.5" Y="6" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>JAAAAAAAAAAAAAAAAAAAAACAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\PaymentModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OnlineStore.Models.ShoppingCart">
+    <Position X="8.75" Y="4.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAGAAAAEAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ShoppingCart.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

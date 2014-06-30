@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Interface Name="OnlineStore.Common.IAccountManager">
+    <Position X="0.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABABAACAAAAAAAAAA=</HashCode>
+      <FileName>IAccountManager.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OnlineStore.Common.IBasketManager">
+    <Position X="3.25" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAAAgEAAAACEAAAAAAAAAAA=</HashCode>
+      <FileName>IBasketManager.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OnlineStore.Common.ICheckOut">
+    <Position X="5.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ICheckOut.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="OnlineStore.Common.IItemManager">
+    <Position X="7" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgACAA=</HashCode>
+      <FileName>IItemManager.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

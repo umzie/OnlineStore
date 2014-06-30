@@ -1,0 +1,1960 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Payment Page</title>
+
+    <meta http-equiv="cache-control" content="max-age=0">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT">
+    <meta http-equiv="pragma" content="no-cache">
+    <link type="text/css" rel="stylesheet" href="./Helper/fonts_paynew.css">
+    <link href="./Helper/pay_new.css" rel="stylesheet" type="text/css">
+    <script src="./Helper/8616.js" async="" type="text/javascript"></script>
+    <script type="text/javascript" async="" src="./Helper/36a4461419ce166737b0d06e35b3f40ff671ae84.1.js"></script>
+    <script type="text/javascript" async="" src="./Helper/i.js"></script>
+    <script type="text/javascript" async="" src="./Helper/a.js"></script>
+    <script async="" src="./Helper/analytics.js"></script>
+    <script type="text/javascript" src="./Helper/jquery.min.js"></script>
+    <script type="text/javascript" src="./Helper/misc.js"></script>
+    <script type="text/javascript" src="./Helper/payment.js"></script>
+    <link href="./Helper/css" rel="stylesheet" type="text/css">
+
+    <style>
+        .podhead {
+            padding-top: 0px;
+            float: left;
+            width: 100%;
+        }
+
+        .odhead {
+            margin-bottom: 10px;
+        }
+
+        .brgrDiv {
+            background-color: #8C8C8C;
+            height: 37px;
+            cursor: pointer;
+        }
+
+        .dcollbg {
+            background: url("/img/pay/bg-cover.png") repeat scroll 0 0 transparent;
+            left: 0;
+            position: absolute;
+            top: 0;
+            vertical-align: middle;
+            z-index: 995;
+        }
+
+        .imgCVV {
+            right: 0px;
+        }
+
+        .cross1 {
+            background: url("/img/pay/close-icon.png?v3") repeat scroll 0 0 transparent;
+        }
+
+        #dAddChrgs .hdr > div > div > span, #dAddChrgs .ptotaln span:first-child, #dAddChrgs .sec > div > span {
+            width: 100px;
+        }
+
+        #dAddChrgs .hdr > div > div > p, #dAddChrgs .ptotaln span, #dAddChrgs .sec > div > p {
+            width: 165px;
+        }
+
+        .rupay {
+            float: left;
+            background: url(/img/pay/pay_ico.png?1);
+        }
+
+        .rupay {
+            background-position: -143px 0;
+            height: 18px;
+            margin-top: 2px;
+            width: 41px;
+        }
+
+        /* CSS for EMI */
+
+        .emi-top-notes {
+            border: 1px solid #CCCCCC;
+            background-color: #FFFACC;
+        }
+
+            .emi-top-notes ul {
+                list-style: disc inside none;
+                margin-left: 10px;
+                font-size: 11px;
+            }
+
+        .tbl-emi-details {
+            border-collapse: collapse;
+            text-align: center;
+            width: 100%;
+        }
+
+            .tbl-emi-details tr.emiopt:hover, .tbl-emi-details tr.emiopt-sel {
+                transition: all 0.5s ease 0s;
+                background-color: white;
+            }
+
+            .tbl-emi-details .emihead {
+                background-color: #8D8D8D;
+                color: white;
+            }
+
+            .tbl-emi-details th, .tbl-emi-details td {
+                border: 1px solid #CCCCCC;
+                padding: 3px;
+            }
+
+            .tbl-emi-details .det {
+                background-color: #FFFACC;
+            }
+
+        .emi-info-callout {
+            position: absolute;
+            width: 520px;
+            border: 2px solid #D81B22;
+        }
+
+        .emi-info-callout-inner {
+            width: 520px;
+        }
+
+        .emi-callout-head {
+            border-bottom: 1px solid #CCCCCC;
+            padding-bottom: 5px;
+        }
+
+        .emi-callout-head-text {
+            font-family: 'Open Sans Condensed',sans-serif;
+            color: #58595B;
+            font-size: 15px;
+            font-weight: bold;
+            margin: 5px;
+        }
+
+        .emi-callout-body {
+            color: black;
+            font-size: 15px;
+            text-align: justify;
+            font-weight: normal;
+        }
+
+        .emi-callout-body-inner {
+            margin-bottom: 5px;
+            height: 250px;
+            overflow-y: scroll;
+            font-size: 11px;
+            padding: 5px;
+            font-family: "Helvetica Neue","Helvetica","Arial",sans-serif;
+        }
+
+            .emi-callout-body-inner ul {
+                list-style: disc outside none;
+                margin-left: 10px;
+                font-size: 11px;
+            }
+
+            .emi-callout-body-inner li {
+                margin-left: 5px;
+                margin-bottom: 10px;
+            }
+
+            .emi-callout-body-inner table {
+                width: 100%;
+            }
+
+                .emi-callout-body-inner table th {
+                    border: 1px solid #CCCCCC;
+                    padding: 3px;
+                    font-weight: bold;
+                    color: white;
+                    background-color: #8D8D8D;
+                    text-align: center;
+                }
+
+                .emi-callout-body-inner table td {
+                    border: 1px solid #CCCCCC;
+                    padding: 3px;
+                    text-align: center;
+                }
+    </style>
+
+    <script type="text/javascript">
+        var _kmq = _kmq || [];
+        var _kmk = _kmk || '36a4461419ce166737b0d06e35b3f40ff671ae84';
+        function _kms(u) {
+            setTimeout(function() {
+                var d = document, f = d.getElementsByTagName('script')[0],
+                s = d.createElement('script');
+                s.type = 'text/javascript'; s.async = true; s.src = u;
+                f.parentNode.insertBefore(s, f);
+            }, 1);
+        }
+        _kms('//i.kissmetrics.com/i.js');
+        _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
+
+        wizrocket = {event:[], profile:[], account:[]};
+        wizrocket.account.push({"id":"RK4-47R-98KZ"});
+        (function() {
+            var wzrk = document.createElement('script');
+            wzrk.type = 'text/javascript'; wzrk.async = true;
+            wzrk.src = ('https:' == document.location.protocol ? 'https://d2r1yp2w7bby2u.cloudfront.net' : 'http://static.wizrocket.com') + '/js/a.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(wzrk, s);
+        })();
+    </script>
+    <script type="text/javascript" src="./Helper/a" async=""></script>
+    <script type="text/javascript" src="./Helper/a(1)" async=""></script>
+</head>
+<body>
+    <!-- DIV FOR BUSY -->
+    <div id="dBsy" style="position: fixed; z-index: 2147483647; top: 379px; left: 433px; display: none;" class="mainr callor">
+        <div class="mainr callwhite">
+            <div class="orcom" style="margin-top:10px;">Just a moment...<br><br><span class="graycom">We're processing your request.</span><br><br></div>
+            <div style="text-align:center;"><img src="./Helper/loader.gif" alt=""></div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <!-- DIV FOR COVER -->
+    <div id="dCover" class="dcollbg" style="width: 100%; height: 952px; display: none;"></div>
+
+    <form id="fBid" name="fBid" action="" method="post">
+        <input type="hidden" name="strBookingId" id="strBookingId" value="AmKswgvcEbcSjNBOdhA8Iw">
+        <input type="hidden" name="lngTransId" id="lngTransId" value="452488884">
+        <input type="hidden" name="blnSuccess" id="blnSuccess" value="Y">
+    </form>
+    <form id="frmGCDtls" action="" method="post">
+        <input type="hidden" id="txtGCName" name="txtGCName" value="">
+        <input type="hidden" id="txtGCEmail" name="txtGCEmail" value="">
+        <input type="hidden" id="txtGCMobile" name="txtGCMobile" value="">
+    </form>
+    <form id="frmCreditDtls" action="" method="post">
+        <input id="strAppCode" name="strAppCode" type="hidden" value="WEBIN">
+        <input id="Hidden1" name="lngTransId" type="hidden" value="452488884">
+        <input id="strBookingAlert" name="strBookingAlert" type="hidden">
+        <input id="strPaymentString" name="strPaymentString" type="hidden">
+        <input id="strTransData" name="strTransData" type="hidden">
+        <input id="TD" name="TD" type="hidden">
+        <input id="strEventType" name="strEventType" type="hidden" value="MT">
+        <!-- RMSID CODE START //-->
+        <div id="RMSIDobject"></div>
+        <script type="text/javascript" language="javascript"> var __RMSID_FORM_ID = "frmCreditDtls"; </script>
+        <!--script type="text/javascript" language="javascript" src="https://scr.rmsid.com/riskengine/rescr.php"></script-->
+        <!-- RMSID CODE END //-->
+    </form>
+
+    <div class="dmain">
+        <div class="container">
+            <div class="bmsMbox">
+                <!-- DIV FOR BUSY -->
+                <div id="Div1" style="display:none;" class="mainr callor">
+                    <div class="mainr callwhite">
+                        <div class="orcom" style="margin-top:10px;">Just a moment...<br><br><span class="graycom">We're processing your request.</span><br><br></div>
+                        <div style="text-align:center;"><img src="./Helper/loader.gif" alt=""></div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                <!-- DIV FOR COVER -->
+                <div id="Div2" class="dcollbg"></div>
+
+                <div id="dContTransErr" style="display:none;" class="mainr callor">
+                    <div class="mainr callwhite">
+                        <div class="orcom" style="margin:20px;">
+                            <div id="txtContTransErr" class="fl_100" style="color: black; line-height: 20px; font-size: 12px; text-align: justify; font-weight: normal;">
+                                Sorry, There is a problem with the connectivity at the venue. Please try after some time.
+                                You could also try calling 39895050 to book tickets or if the problem persists please write
+                                to us at helpdesk@sapient.com
+                            </div>
+                            <div class="clear"></div>
+                            <a class="button yellow" href="javascript:;" onclick="fnContTransToHome();">Go to home</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Report start-->
+                <div id="report" class="mainr callor" style="display: none;">
+                    <div class="mainr callwhite">
+                        <a onclick="jq(this).parent().parent().fadeOut(&#39;fast&#39;);fnCover(false);" id="close" href="javascript:;">
+                            <div class="cross fright"></div>
+                        </a>
+                        <div class="spacemain">
+                            <div class="head">
+                                <h3 class="fl_100">Report an Issue</h3>
+                                <h2>Your feedback helps us improve our website.</h2>
+                            </div>
+                            <div class="fl_100">
+                                <div class="signin fleft">
+                                    <div class="ic-msg msg"></div>
+                                    <input type="text" name="iREEmail" id="iREEmail" placeholder="Email">
+                                </div>
+                                <div class="signin fleft">
+                                    <div class="ic-user msg"></div>
+                                    <input type="text" name="iREName" id="iREName" placeholder="Name">
+                                </div>
+                                <div class="signin fleft">
+                                    <textarea id="iREComment" name="txtComment" type="text" rows="3" placeholder="Comment" style="width:342px;"></textarea>
+                                </div>
+                                <div class="fleft">
+                                    <div class="addinfo">
+                                        <span class="ic-arrt" style="font-size:12px;" id="dAddData"></span>
+                                        <a href="javascript:;" onclick="fnShwDErr(this);">Additional Info</a>
+                                        <div id="iRepBInfo" class="fleft" style="display:none;"></div>
+                                        <div id="iRECmdInfo" class="fleft" style="display:none;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="errDivRE" class="error rpprob" style="display: none;"></div>
+
+                            <div class="fright">
+                                <a class="button yellow" id="butSubmit" onclick="fnValReport();" href="javascript:;">Submit</a>
+                                <div class="fright" style="display:none;" id="repldng">
+                                    <img alt="Loading.." id="Loading" src="./Helper/loader.gif">
+                                </div>
+                                <!--a onClick="jq('#report').fadeOut('fast');fnCover(false);"  class="button blackbtn" href="javascript:;">Close</a-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Report ends-->
+                <!-- Custom Error Starts -->
+                <div class="box_960">
+                    
+                </div>
+                <!-- Custom Error Ends -->
+                <!--HEADER STARTS-->
+                <div class="heddmain">
+                    <div class="logo"
+                         style="font-family: 'Calibri Light'; font-size: 32px; font-weight: bold; font-style: italic; color: #000080">
+                        OurPaymentApp
+                    </div>
+                    <div class="help">
+                        <span class="ic-phone imgC"></span>
+                        <p>3989 5050</p>
+                    </div>
+                </div>
+                <!--HEADER ENDS-->
+                <!--MAIN SEC STARTS-->
+                <div class="box_960">
+                    <div class="box_620">
+                        <!-- TOP TABS -->
+                        <!-- WHITE SECTION LEFT SIDE STARTS -->
+                        <!-- WHITE SECTION LEFT SIDE ENDS -->
+                        <!--LAST QUIK PAY METHOD-->
+                        <!--QUICK PAY-->
+                        <div id="dSecQuikPay" data-role="accordion" class="blocks" data-mode="hide" style="display: none;">
+                            <div>
+                                <div data-role="header" class="phead pheadwh" onclick="fnDoSwitchAcc(&#39;dSecQuikPay&#39;);"><span class="ic-qpay qpaysm"> <span class="caret-u-g" data-role="arrow"></span></span></div>
+                                <div data-role="body" class="pcontent hide">
+                                    <div class="fl_100 mainbl">
+                                        <div data-role="list" class="lpaybl bgpaylbl" style="display: none;">
+
+                                        </div>
+                                        <div data-role="loading" class="lpaybl " style="text-align: center;">
+                                            <img src="./Helper/loader.gif" alt="" align="center">
+                                            <span style="">Loading...</span>
+                                        </div>
+                                    </div>
+
+                                    <div id="errDivLstQP" class="error mypagerr" style="display:none; margin-bottom:10px;"></div>
+
+                                    <div class="fl_100 terms" id="dCheckMkPayBtnQuikPay">
+                                        <span class="qpayt">By clicking "QuikPay" you agree to the <a href="http://sapient.com/static/terms/" target="_blank">terms and conditions</a></span>
+                                        <a class="btn" id="btnPayLastQuikPay" onclick="fnPayLastQuikPay();"><span class="ic-qpay qpaybig_btn"></span></a>
+                                    </div>
+                                    <div id="dTimedOutQuikPay" class="fl_100" style="display: none;">
+                                        Transaction has timed out! <a onclick="fnCanTr();" href="javascript:;"><strong>Click to go home</strong></a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--SECURE PAYMENT STARTS-->
+                        <div id="dPaySection" class="dPaySection">
+                            <!--TOOLTIP FOR CREDIT CARD-->
+                            <div id="dWhatCardsTooltip" class="tip-isos">
+                                OurCheckoutSite accepts Visa, MasterCard, American Express, Maestro Credit cards and Visa, MasterCard, Maestro Debit cards.
+                            </div>
+
+                            <div id="dSecPayOpts" data-role="accordion" class="blocks" data-mode="show">
+                                <div>
+                                    <div data-role="header" class="phead" onclick="fnDoSwitchAcc(&#39;dSecPayOpts&#39;);"><span id="spnMorePayOptsTag">Payment Options</span><span class="caret-d" data-role="arrow"></span></div>
+                                    <div data-role="body" id="dvUPayOpt" class="fleft pcontent mpayment show">
+                                        <div class="b160" id="dPayTabs">
+                                            <ul>
+                                                <li id="dTMyPay" class="normal">
+                                                    <a href="javascript:;" onclick="fnReqLogin({ from: &#39;mypay&#39; });">QuikPays</a>
+                                                </li>
+                                                <li id="dTDCCrd" onclick="fnSwPayTab(&#39;DebitCreditCard&#39;);jq(&#39;#errDivDC&#39;).html(&#39;&#39;).hide();" class="chosen">
+                                                    <a href="javascript:;">Debit/Credit Card</a>
+                                                </li>
+                                                <li id="dTDCCrd_EMI" onclick="fnSwPayTab(&#39;DebitCreditCard_EMI&#39;);jq(&#39;#errDivDC_EMI&#39;).html(&#39;&#39;).hide();" style="display: none;" class="normal">
+                                                    <a href="javascript:;">Credit Card EMI</a>
+                                                </li>
+                                                <li id="dTNetBnk" onclick="fnSwPayTab(&#39;NetBanking&#39;);jq(&#39;&#39;).html(&#39;#errDivNB&#39;).hide();" class="normal">
+                                                    <a href="javascript:;">Net Banking</a>
+                                                </li>
+                                                <li id="dTPayPal" onclick="fnSwPayTab(&#39;PayPal&#39;);jq(&#39;#errDivPP&#39;).html(&#39;&#39;).hide();" style="display:none;" class="normal">
+                                                    <a href="javascript:;">PayPal</a>
+                                                </li>
+                                                <li id="dTAmexEze" onclick="fnSwPayTab(&#39;AmexEzeClick&#39;);jq(&#39;#errDivEZ&#39;).html(&#39;&#39;).hide();" class="normal">
+                                                    <a href="javascript:;">American Express ezeClick</a>
+                                                </li>
+                                                <!--a id="dTCOD" href="javascript:;" onClick="fnSwPayTab('CashOnDelivery');">
+                                                       <div class="leftnav">Cash on Delivery</div>
+                                                       <div class="pgnavbd"></div>
+                                                </a-->
+                                                <!--li id="dTPayUM" onClick="fnSwPayTab('PayUMoney');jq('#errDivPUM').html('').hide();">
+                                                       <a href="javascript:;">PayUMoney<br/><span>upto 10% Cashback</span></a>
+                                                </li-->
+                                                <li id="dTCshCrd" onclick="fnSwPayTab(&#39;CashCard&#39;);jq(&#39;#errDivCC&#39;).html(&#39;&#39;).hide();" class="normal">
+                                                    <a href="javascript:;">Cash Card / Mobile / Wallet</a>
+                                                </li>
+                                                <li id="dTGftVchr" onclick="fnSwPayTab(&#39;GiftVoucher&#39;);jq(&#39;#errDivGV&#39;).html(&#39;&#39;).hide();" class="normal">
+                                                    <a href="javascript:;">Gift Voucher</a>
+                                                </li>
+                                                <li id="dTRdmPnts" onclick="fnSwPayTab(&#39;RedeemPoints&#39;);jq(&#39;#errDivRP&#39;).html(&#39;&#39;).hide();" class="normal">
+                                                    <a href="javascript:;">Redeem Points</a>
+                                                </li>
+                                                <li id="dTCOD" onclick="fnSwPayTab(&#39;COD&#39;);jq(&#39;#errDivRP&#39;).html(&#39;&#39;).hide();" class="normal">
+                                                    <a href="javascript:;">COD</a>
+                                                </li>
+                                                <li id="dTQRpay" onclick="fnSwPayTab(&#39;QRpay&#39;);jq(&#39;#errDivRP&#39;).html(&#39;&#39;).hide();" class="normal">
+                                                    <a href="javascript:;">QR Pay</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <!--RIGHT SECTION OF PAYMENT STARTS-->
+                                        <div class="payrgt">
+                                            <div id="dPayConts" class="dPayConts">
+                                                <div id="dPayContsLoading" class="fl_100" style="text-align: center; font-weight: bold; display: none;">
+                                                    <img src="./Helper/loader.gif" alt="">
+                                                    <div class="clear">&nbsp;</div>
+                                                    Loading payment options...
+                                                </div>
+                                                <div id="dCMyPay" class="fl_100" style="display: none;">
+                                                    <!-- Div for listing MyPayments -->
+                                                    <div id="dListMyPay" class="qpay fl_100" style="display: none;">
+                                                        <section class="fl_100">
+                                                            <h1 class="title14b">Debit/Credit Card<span class="line-effect"></span></h1>
+                                                            <div id="dDCList" class="fl_100"></div>
+                                                        </section>
+                                                        <section id="banks" class="fl_100">
+                                                            <h1 class="title14b">Net Banking<span class="line-effect"></span></h1>
+                                                            <div id="dNBList" class="fl_100"></div>
+                                                        </section>
+                                                        <div id="errDivMWLP" class="error mypagerr" style="display:none; margin-bottom:10px;"></div>
+                                                    </div>
+                                                    <div id="errDivMW" class="error mypagerr" style="display:none;"></div>
+                                                </div>
+                                                <div id="dCDCCrd" class="dCDCCrd" style="">
+                                                    <!--<div class="fright card-tip">
+                                                           <a id="dWhatCards" href="javascript:;">What cards can I use?</a>
+                                                    </div>-->
+                                                    <div class="fright card-tip">
+                                                        <img src="./Helper/pay_ico.png">
+                                                    </div>
+                                                    <!-- Debit / Credit Section - BEGIN -->
+                                                    <div class="mb10 fl_100" style="display: none;">
+                                                        <div class="txtname">Card Category :</div>
+                                                        <select id="cmbCardCat" style="width: 185px;">
+                                                            <option value="VISA">Visa</option>
+                                                            <option value="MASTERCARD">Master Card</option>
+                                                            <option value="AMEX">American Express</option>
+                                                            <option value="MAESTRO">Maestro</option>
+                                                            <option value="RUPAY">RuPay</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="mb10 fl_100">
+                                                        <div class="fleft" style="position:relative;">
+                                                            <input type="text" id="txtCardNo" maxlength="25" class="textbox wt280" placeholder="Enter Your Card Number" oncontextmenu="return false;" onpaste="return false;">
+                                                            <span id="imgCardType" class="cardtype"></span>
+                                                        </div>
+                                                    </div>
+                                                    <div id="dInvalidCard" class="mb10 fl_100" style="color: red; display: none;">You have entered an invalid card number!</div>
+                                                    <div class="mb10 fl_100">
+                                                        <input id="txtCardName" type="text" class="textbox wt280" placeholder="Your Name on Card">
+                                                    </div>
+                                                    <div id="dExpiryDate" class="mb10 fl_100 dExpiryDate">
+                                                        <div class="txtname">Expiry :</div>
+                                                        <select id="cmbExpMonth" class="wt135 mr20">
+                                                            <option value="">Select</option>
+                                                            <option value="01">Jan (1)</option>
+                                                            <option value="02">Feb (2)</option>
+                                                            <option value="03">Mar (3)</option>
+                                                            <option value="04">Apr (4)</option>
+                                                            <option value="05">May (5)</option>
+                                                            <option value="06">Jun (6)</option>
+                                                            <option value="07">Jul (7)</option>
+                                                            <option value="08">Aug (8)</option>
+                                                            <option value="09">Sep (9)</option>
+                                                            <option value="10">Oct (10)</option>
+                                                            <option value="11">Nov (11)</option>
+                                                            <option value="12">Dec (12)</option>
+                                                        </select>
+                                                        <select id="cmbExpYear" class="wt135">
+                                                            <option value="">Year</option>
+                                                            <option value="2014">2014</option>
+                                                            <option value="2015">2015</option>
+                                                            <option value="2016">2016</option>
+                                                            <option value="2017">2017</option>
+                                                            <option value="2018">2018</option>
+                                                            <option value="2019">2019</option>
+                                                            <option value="2020">2020</option>
+                                                            <option value="2021">2021</option>
+                                                            <option value="2022">2022</option>
+                                                            <option value="2023">2023</option>
+                                                            <option value="2024">2024</option>
+                                                            <option value="2025">2025</option>
+                                                            <option value="2026">2026</option>
+                                                            <option value="2027">2027</option>
+                                                            <option value="2028">2028</option>
+                                                            <option value="2029">2029</option>
+                                                            <option value="2030">2030</option>
+                                                            <option value="2031">2031</option>
+                                                            <option value="2032">2032</option>
+                                                            <option value="2033">2033</option>
+                                                            <option value="2034">2034</option>
+                                                            <option value="2035">2035</option>
+                                                            <option value="2036">2036</option>
+                                                            <option value="2037">2037</option>
+                                                            <option value="2038">2038</option>
+                                                            <option value="2039">2039</option>
+                                                            <option value="2040">2040</option>
+                                                            <option value="2041">2041</option>
+                                                            <option value="2042">2042</option>
+                                                            <option value="2043">2043</option>
+                                                            <option value="2044">2044</option>
+                                                            <option value="2045">2045</option>
+                                                            <option value="2046">2046</option>
+                                                            <option value="2047">2047</option>
+                                                            <option value="2048">2048</option>
+                                                            <option value="2049">2049</option>
+                                                            <option value="2050">2050</option>
+                                                            <option value="2051">2051</option>
+                                                            <option value="2052">2052</option>
+                                                            <option value="2053">2053</option>
+                                                            <option value="2054">2054</option>
+                                                            <option value="2055">2055</option>
+                                                            <option value="2056">2056</option>
+                                                            <option value="2057">2057</option>
+                                                            <option value="2058">2058</option>
+                                                            <option value="2059">2059</option>
+                                                            <option value="2060">2060</option>
+                                                            <option value="2061">2061</option>
+                                                            <option value="2062">2062</option>
+                                                            <option value="2063">2063</option>
+                                                            <option value="2064">2064</option>
+                                                            <option value="2065">2065</option>
+                                                            <option value="2066">2066</option>
+                                                            <option value="2067">2067</option>
+                                                            <option value="2068">2068</option>
+                                                            <option value="2069">2069</option>
+                                                            <option value="2070">2070</option>
+                                                            <option value="2071">2071</option>
+                                                            <option value="2072">2072</option>
+                                                            <option value="2073">2073</option>
+                                                        </select>
+                                                        <!--PIN/ZIP CODE BLOCK-->
+                                                        <div id="oPinCont" class="fright cvv ml5" style="display: none;">
+                                                            <input type="text" placeholder="ZIP CODE" id="txtPin" maxlength="10">
+                                                        </div>
+                                                        <div id="dCVV" class="cvv fright mr5">
+                                                            <input type="password" id="txtCVV" placeholder="CVV" maxlength="4" onfocus="fnSwapCvvSec(true);" onblur="fnSwapCvvSec(false);">
+                                                            <img id="imgCvv" class="imgCVV" src="./Helper/CVV.jpg" alt="" title="Please Enter 3 Digit Number printed on the back of your card" style="display: none;">
+                                                            <img id="imgCvvAmex" class="imgCVV" src="./Helper/CVV_amex.jpg" alt="" title="Please Enter 4 Digit Number printed on the back of your card" style="display: none;">
+                                                        </div>
+                                                    </div>
+                                                    <div id="dOptionalExpiryDate" class="mb10 fl_100" style="margin-left: 110px; display: none;">Expiry date and CVV are optional if not present on your card.</div>
+                                                    <!-- Signed in -->
+                                                    <div id="dDCSaveDet" class="brgr lpaybl" style="display: none;">
+                                                        <div>
+                                                            <label>
+                                                                <input id="chkSaveDCAsk" type="checkbox"> <!-- Expand the below section on check -->
+                                                                <span class="ic-qpay qpaybig"></span>
+                                                            </label>
+                                                            <p>Save this card information to my OurCheckout account and make faster payments.</p>
+                                                        </div>
+                                                        <div id="dSaveDCDet" class="mypaylog" style="display: none;">
+                                                            <!-- The div needs to be expanded when the above checkbox is checked -->
+                                                            <div class="dadcc">Please enter a 'Nickname' for this card</div>
+                                                            <div class="fleft">
+                                                                <input id="txtDCCardDesc" type="text" class="textbox wt280" style="width:388px;" maxlength="30" placeholder="eg. (My Credit Card)">
+                                                            </div>
+                                                            <!-- Card to be saved as soon as checkbox is checked (not on button click) and hide the section -->
+                                                            <!--div class="fl_100 mb10">
+                                                                   <label><input id="chkSaveDC" type="checkbox" value="" />&nbsp;Yes, I accept the <a href="http://sapient.com/static/terms/" target="_blank">Terms, Conditions & Booking Policy.</a></label>
+                                                            </div-->
+                                                        </div>
+                                                        <div id="dSaveDCThanks" class="fl_100 ft14 mb10" style="margin: 20px; width: 408px; text-align: center; display: none;">Thanks! Your card is saved.</div><!-- Show this div when card is successfully saved. Show the strException message if blnSuccess is false -->
+                                                    </div>
+
+                                                    <!-- Guest -->
+                                                    <div id="dDCGuestSave" class="brgr lpaybl" style="" onclick="fnReqLogin({ from: &#39;cdsave&#39; });">
+                                                        <div>
+                                                            <input type="checkbox" onchange="if(objCk.get({ name: &#39;ld&#39; }) == &#39;&#39;) { jq(this).attr(&#39;checked&#39;, false); }">
+                                                            <span class="ic-qpay qpaybig"></span>
+                                                            <p>Save this card information to my OurCheckout account and make faster payments.</p>
+                                                        </div>
+                                                    </div>
+                                                    <div id="errDivDC" class="error mypagerr" style="display:none;"></div>
+                                                    <!-- Debit / Credit Section - END -->
+                                                </div>
+                                                <div id="dCDCCrd_EMI" class="dCDCCrd" style="display: none;">
+                                                    <!--<div class="fright card-tip">
+                                                           <a id="dWhatCards" href="javascript:;">What cards can I use?</a>
+                                                    </div>-->
+                                                    <!--div class="fright card-tip">
+                                                           <img src="/img/pay/pay_ico.png?1">
+                                                    </div-->
+                                                    <div class="mb10 fl_100 bold">
+                                                        Currently available for HDFC Bank Credit Cardholders only.
+                                                    </div>
+                                                    <!-- Credit - EMI Section - END -->
+                                                    <div class="mb10 fl_100" style="display: none;">
+                                                        <div class="txtname">Card Category :</div>
+                                                        <select id="cmbCardCat_EMI" style="width: 185px;">
+                                                            <option value="VISA">Visa</option>
+                                                            <option value="MASTERCARD">Master Card</option>
+                                                            <option value="AMEX">American Express</option>
+                                                            <option value="MAESTRO">Maestro</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="mb10 fl_100">
+                                                        <div class="fleft" style="position:relative;">
+                                                            <input type="text" id="txtCardNo_EMI" maxlength="25" class="textbox wt280" placeholder="Enter Your Card Number" oncontextmenu="return false;" onpaste="return false;" value="">
+                                                            <span id="imgCardType_EMI" class="cardtype"></span>
+                                                        </div>
+                                                    </div>
+                                                    <div id="dInvalidCard_EMI" class="mb10 fl_100" style="color: red; display: none;">You have entered an invalid card number!</div>
+
+                                                    <div id="dEMIDetails" class="mb10 fl_100" style="display: none;"></div>
+
+                                                    <div id="dEMIInfoCallout" class="mainr fleft emi-info-callout" style="display: none;">
+                                                        <div class="callwhite emi-info-callout-inner">
+                                                            <div class="orcom" style="margin: 5px;">
+                                                                <div class="fl_100 emi-callout-head">
+                                                                    <div class="fleft emi-callout-head-text">
+                                                                        EMI Details
+                                                                    </div>
+                                                                    <div class="fright">
+                                                                        <a class="button yellow" href="javascript:;" onclick="fnSwEMICallout(false);">X</a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="fl_100 emi-callout-body">
+                                                                    <div class="emi-callout-body-inner">
+                                                                        <ul>
+                                                                            <li>OurCheckout's EMI scheme is currently available for HDFC Bank Credit Cardholders only. You may choose to pay in 3, 6, 9, or 12-month instalments.</li>
+                                                                            <li>NO processing fee is charged for availing OurCheckout's EMI payment option. In case of any kind of refund in an EMI transaction, interest already billed in a particular transaction will not be refundable under any circumstances.</li>
+                                                                            <li>The Bank charges annual interest rates (as shown below) according to the reducing monthly balance. In the monthly reducing cycle, the principal is reduced with every EMI and the interest is calculated on the outstanding balance.</li>
+                                                                        </ul>
+                                                                        <div class="clear">&nbsp;</div>
+                                                                        <strong>EMI plans / Interest charge</strong>
+                                                                        <table>
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <th>Bank</th>
+                                                                                    <th>3-month</th>
+                                                                                    <th>6-month</th>
+                                                                                    <th>9-month</th>
+                                                                                    <th>12-month</th>
+                                                                                </tr>
+                                                                                <tr style="display: none;">
+                                                                                    <td>AMEX</td>
+                                                                                    <td>-</td>
+                                                                                    <td>17.88%</td>
+                                                                                    <td>-</td>
+                                                                                    <td>17.88%</td>
+                                                                                </tr>
+                                                                                <tr style="display: none;">
+                                                                                    <td>CITI</td>
+                                                                                    <td>12%</td>
+                                                                                    <td>12%</td>
+                                                                                    <td>15%</td>
+                                                                                    <td>-</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>HDFC</td>
+                                                                                    <td>12%</td>
+                                                                                    <td>12%</td>
+                                                                                    <td>13%</td>
+                                                                                    <td>13%</td>
+                                                                                </tr>
+                                                                                <tr style="display: none;">
+                                                                                    <td>ICICI</td>
+                                                                                    <td>13%</td>
+                                                                                    <td>13%</td>
+                                                                                    <td>13%</td>
+                                                                                    <td>13%</td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                        <!--i>Please note that 3-month / 9-month EMI plans are not available on American Express credit cards. Similarly, 12-month EMI plan is unavailable on Citibank cards.</i-->
+                                                                        <div class="clear">&nbsp;</div>
+                                                                        <strong>Example and Calculations</strong>
+                                                                        <table>
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <th>Tenure (months)</th>
+                                                                                    <th>Loan amount</th>
+                                                                                    <th>Monthly installment</th>
+                                                                                    <th>Bank interest rate</th>
+                                                                                    <th>Total indicative price you pay</th>
+                                                                                    <th>Indicative interest paid to Bank</th>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>3</td>
+                                                                                    <td>Rs 20,000</td>
+                                                                                    <td>Rs 6,800.44</td>
+                                                                                    <td>12.00%</td>
+                                                                                    <td>Rs. 20,401.33</td>
+                                                                                    <td>Rs. 401.33</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>6</td>
+                                                                                    <td>Rs 20,000</td>
+                                                                                    <td>Rs 3,450.97</td>
+                                                                                    <td>12.00%</td>
+                                                                                    <td>Rs 20,705.80</td>
+                                                                                    <td>Rs. 705.80</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>9</td>
+                                                                                    <td>Rs 20,000</td>
+                                                                                    <td>Rs 2,344.32</td>
+                                                                                    <td>13.00%</td>
+                                                                                    <td>Rs 21,098.89</td>
+                                                                                    <td>Rs. 1,098.89</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>12</td>
+                                                                                    <td>Rs 20,000</td>
+                                                                                    <td>Rs 1,786.35</td>
+                                                                                    <td>13.00%</td>
+                                                                                    <td>Rs 21,436.15</td>
+                                                                                    <td>Rs. 1,436.15</td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div id="dCardName_EMI" class="mb10 fl_100" style="display: none;">
+                                                        <input id="txtCardName_EMI" type="text" class="textbox wt280" placeholder="Your Name on Card">
+                                                    </div>
+                                                    <div id="dExpiryDate_EMI" class="mb10 fl_100 dExpiryDate" style="display: none;">
+                                                        <div class="txtname">Expiry :</div>
+                                                        <select id="cmbExpMonth_EMI" class="wt135 mr20">
+                                                            <option value="">Select</option>
+                                                            <option value="01">Jan (1)</option>
+                                                            <option value="02">Feb (2)</option>
+                                                            <option value="03">Mar (3)</option>
+                                                            <option value="04">Apr (4)</option>
+                                                            <option value="05">May (5)</option>
+                                                            <option value="06">Jun (6)</option>
+                                                            <option value="07">Jul (7)</option>
+                                                            <option value="08">Aug (8)</option>
+                                                            <option value="09">Sep (9)</option>
+                                                            <option value="10">Oct (10)</option>
+                                                            <option value="11">Nov (11)</option>
+                                                            <option value="12">Dec (12)</option>
+                                                        </select>
+                                                        <select id="cmbExpYear_EMI" class="wt135">
+                                                            <option value="">Year</option>
+                                                            <option value="2014">2014</option>
+                                                            <option value="2015">2015</option>
+                                                            <option value="2016">2016</option>
+                                                            <option value="2017">2017</option>
+                                                            <option value="2018">2018</option>
+                                                            <option value="2019">2019</option>
+                                                            <option value="2020">2020</option>
+                                                            <option value="2021">2021</option>
+                                                            <option value="2022">2022</option>
+                                                            <option value="2023">2023</option>
+                                                            <option value="2024">2024</option>
+                                                            <option value="2025">2025</option>
+                                                            <option value="2026">2026</option>
+                                                            <option value="2027">2027</option>
+                                                            <option value="2028">2028</option>
+                                                            <option value="2029">2029</option>
+                                                            <option value="2030">2030</option>
+                                                            <option value="2031">2031</option>
+                                                            <option value="2032">2032</option>
+                                                            <option value="2033">2033</option>
+                                                            <option value="2034">2034</option>
+                                                            <option value="2035">2035</option>
+                                                            <option value="2036">2036</option>
+                                                            <option value="2037">2037</option>
+                                                            <option value="2038">2038</option>
+                                                            <option value="2039">2039</option>
+                                                            <option value="2040">2040</option>
+                                                            <option value="2041">2041</option>
+                                                            <option value="2042">2042</option>
+                                                            <option value="2043">2043</option>
+                                                            <option value="2044">2044</option>
+                                                            <option value="2045">2045</option>
+                                                            <option value="2046">2046</option>
+                                                            <option value="2047">2047</option>
+                                                            <option value="2048">2048</option>
+                                                            <option value="2049">2049</option>
+                                                            <option value="2050">2050</option>
+                                                            <option value="2051">2051</option>
+                                                            <option value="2052">2052</option>
+                                                            <option value="2053">2053</option>
+                                                            <option value="2054">2054</option>
+                                                            <option value="2055">2055</option>
+                                                            <option value="2056">2056</option>
+                                                            <option value="2057">2057</option>
+                                                            <option value="2058">2058</option>
+                                                            <option value="2059">2059</option>
+                                                            <option value="2060">2060</option>
+                                                            <option value="2061">2061</option>
+                                                            <option value="2062">2062</option>
+                                                            <option value="2063">2063</option>
+                                                            <option value="2064">2064</option>
+                                                            <option value="2065">2065</option>
+                                                            <option value="2066">2066</option>
+                                                            <option value="2067">2067</option>
+                                                            <option value="2068">2068</option>
+                                                            <option value="2069">2069</option>
+                                                            <option value="2070">2070</option>
+                                                            <option value="2071">2071</option>
+                                                            <option value="2072">2072</option>
+                                                            <option value="2073">2073</option>
+                                                        </select>
+                                                        <!--PIN/ZIP CODE BLOCK-->
+                                                        <div id="oPinCont_EMI" class="fright cvv ml5" style="display: none;">
+                                                            <input type="text" placeholder="ZIP CODE" id="txtPin_EMI" maxlength="10">
+                                                        </div>
+                                                        <div id="dCVV_EMI" class="cvv fright mr5">
+                                                            <input type="password" id="txtCVV_EMI" placeholder="CVV" maxlength="4" onfocus="fnSwapCvvSec(true);" onblur="fnSwapCvvSec(false);">
+                                                            <img id="imgCvv_EMI" class="imgCVV" src="./Helper/CVV.jpg" alt="" title="Please Enter 3 Digit Number printed on the back of your card" style="display: none;">
+                                                            <img id="imgCvvAmex_EMI" class="imgCVV" src="./Helper/CVV_amex.jpg" alt="" title="Please Enter 4 Digit Number printed on the back of your card" style="display: none;">
+                                                        </div>
+                                                    </div>
+                                                    <div id="dOptionalExpiryDate_EMI" class="mb10 fl_100" style="margin-left: 110px; display: none;">Expiry date and CVV are optional if not present on your card.</div>
+                                                    <!-- Signed in -->
+                                                    <div class="clear">&nbsp;</div>
+                                                    <div class="clear">&nbsp;</div>
+                                                    <div id="dDCSaveDet_EMI" class="brgr lpaybl" style="display: none;">
+                                                        <div>
+                                                            <label>
+                                                                <input id="chkSaveDCAsk_EMI" type="checkbox"> <!-- Expand the below section on check -->
+                                                                <span class="ic-qpay qpaybig"></span>
+                                                            </label>
+                                                            <p>Save this card information to my OurCheckout account and make faster payments.</p>
+                                                        </div>
+                                                        <div id="dSaveDCDet_EMI" class="mypaylog" style="display: none;">
+                                                            <!-- The div needs to be expanded when the above checkbox is checked -->
+                                                            <div class="dadcc">Please enter a 'Nickname' for this card</div>
+                                                            <div class="fleft">
+                                                                <input id="txtDCCardDesc_EMI" type="text" class="textbox wt280" style="width:388px;" maxlength="30" placeholder="eg. (My Credit Card)">
+                                                            </div>
+                                                            <!-- Card to be saved as soon as checkbox is checked (not on button click) and hide the section -->
+                                                            <!--div class="fl_100 mb10">
+                                                                   <label><input id="chkSaveDC" type="checkbox" value="" />&nbsp;Yes, I accept the <a href="http://sapient.com/static/terms/" target="_blank">Terms, Conditions & Booking Policy.</a></label>
+                                                            </div-->
+                                                        </div>
+                                                        <div id="dSaveDCThanks_EMI" class="fl_100 ft14 mb10" style="margin: 20px; width: 408px; text-align: center; display: none;">Thanks! Your card is saved.</div><!-- Show this div when card is successfully saved. Show the strException message if blnSuccess is false -->
+                                                    </div>
+
+                                                    <!-- Guest -->
+                                                    <div id="dDCGuestSave_EMI" class="brgr lpaybl" style="display: none;" onclick="fnReqLogin({ from: &#39;cdsave&#39; });">
+                                                        <div>
+                                                            <input type="checkbox" onchange="if(objCk.get({ name: &#39;ld&#39; }) == &#39;&#39;) { jq(this).attr(&#39;checked&#39;, false); }">
+                                                            <span class="ic-qpay qpaybig"></span>
+                                                            <p>Save this card information to my OurCheckout account and make faster payments.</p>
+                                                        </div>
+                                                    </div>
+                                                    <div id="errDivDC_EMI" class="error mypagerr" style="display:none;"></div>
+                                                    <!-- Credit - EMI Section - END -->
+                                                </div>
+                                                <div id="dCAmexEze" class="dCAmexEze" style="display: none;">
+                                                    <!-- Amex ezeClick Section - BEGIN -->
+                                                    <div class="fl_100">
+                                                        <div class="fleft">
+                                                            <img src="./Helper/amex_ezeclick.png" height="45">
+                                                        </div>
+                                                        <div class="fleft" style="margin: 5px 0 0 6px; line-height: 13px; font-size: 11px; width: 220px; font-weight: bold;">
+                                                            One ID is all it takes. <br>
+                                                            Exclusively for American Express Cardmembers. <br>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="clear">&nbsp;</div>
+                                                    <div class="clear">&nbsp;</div>
+
+                                                    <div class="fl_100">
+                                                        ezeClick provides American Express Cardmembers with an easy and fast method to
+                                                        complete their online purchase. All you need to do is create a unique ID - a one-time
+                                                        process. You will not have to refer to your card plastic for any future online transactions.
+                                                        You need to simply enter the ezeClick User ID. The transaction process is fast, safe and secure.
+                                                        Also, you get to Sync multiple American Express Cards to this account.
+                                                    </div>
+
+                                                    <div class="clear">&nbsp;</div>
+                                                    <div class="clear">&nbsp;</div>
+                                                    <div id="errDivEZ" class="error mypagerr" style="display:none;"></div>
+                                                    <!-- Amex ezeClick Section - END -->
+                                                </div>
+                                                <div id="dCPayUM" class="dCAmexEze" style="display: none;">
+                                                    <!-- PayUMoney Section - BEGIN -->
+                                                    <div class="fl_100" style="text-align:center;">
+                                                        <p class="mb10">Supports all Credit Cards, Debit Cards and NetBanking Options</p>
+                                                        <p class="mb10 fl_100" style="margin-left:100px;">
+                                                            <span class="fleft mastercard" style="margin-right:5px;"></span>
+                                                            <span class="fleft maestro" style="margin-right:5px;"></span>
+                                                            <span class="fleft visa" style="margin-right:5px;"></span>
+                                                            <!--span class="fleft amex" style="margin-right:5px;"></span-->
+                                                            <span class="fleft" style="margin:5px;"><img alt="PayU Netbanking" src="./Helper/net-banking-logo.png"></span>
+                                                        </p>
+                                                        <p style="font-size:18px;" class="bold mb10">Pay using PayUMoney to get upto 10% Cashback</p>
+                                                        <!--p style="font-size:18px; color:#D81B22;" class="bold mb10">5% Cashback</p-->
+                                                        <p class="mb10">* Maximum Cashback Rs.50 Per Transaction</p>
+                                                        <p class="mb10">In the next step you will be asked to enter Card or NetBanking Details</p>
+                                                    </div>
+                                                    <div id="errDivPUM" class="error mypagerr" style="display:none;"></div>
+                                                    <!-- PayUMoney Section - END -->
+                                                </div>
+                                                <div id="dCNetBnk" class="netbank cmnhgt" style="display: none;">
+                                                    <h1 class="title14b fl_100">Net Banking<span class="line-effect"></span></h1>
+                                                    <h3 id="bnkHeading" style="display: none;"></h3>
+                                                    <div id="dListNetBnks" class="dListNetBnks fleft">
+                                                        <!-- NetBanking Section - BEGIN -->
+                                                        <div class="mb10 fl_100" style="display: none;">
+                                                            <div class="txtname">Select Bank :</div>
+                                                            <select id="dNetBnksAll" style="width: 185px;"><option value="">=== Select Bank ===</option><option value="ICI-NA">ICICI NetBanking</option><option value="YBK-NA">Yes Bank NetBanking</option><option value="HDF-NA">HDFC Bank NetBanking</option><option value="CIT-NA">Citibank NetBanking</option><option value="SBI-NA">SBI NetBanking</option><option value="SCB-NA">Standard Chartered Bank</option><option value="UTI-NA">AXIS Bank NetBanking</option><option value="162-NA">Kotak NetBanking</option><option value="IDB-NA">IDBI Bank NetBanking</option><option value="ALB-NA">Allahabad Bank NetBanking</option><option value="ADB-NA">Andhra Bank</option><option value="BBK-NA">Bank of Bahrain and Kuwait NetBanking</option><option value="BBC-NA">Bank of Baroda Corporate NetBanking</option><option value="BBR-NA">Bank of Baroda Retail NetBanking</option><option value="BOI-NA">Bank of India NetBanking</option><option value="BOM-NA">Bank of Maharashtra NetBanking</option><option value="CSB-NA">Catholic Syrian Bank NetBanking</option><option value="CBI-NA">Central Bank of India</option><option value="CUB-NA">City Union Bank NetBanking</option><option value="CRP-NA">Corporation Bank</option><option value="DBK-NA">Deutsche Bank NetBanking</option><option value="DCB-NA">Development Credit Bank</option><option value="DLB-NA">Dhanlaxmi Bank NetBanking</option><option value="FBK-NA">Federal Bank NetBanking</option><option value="IDS-NA">Indusind Bank NetBanking</option><option value="IOB-NA">Indian Overseas Bank</option><option value="ING-NA">ING Vysya Bank NetBanking</option><option value="JKB-NA">Jammu and Kashmir NetBanking</option><option value="KBL-NA">Karnataka Bank NetBanking</option><option value="KVB-NA">Karur Vysya Bank NetBanking</option><option value="LVR-NA">Lakshmi Vilas Bank NetBanking</option><option value="OBC-NA">Oriental Bank of Commerce NetBanking</option><option value="CPN-NA">PNB Corporate NetBanking</option><option value="PNB-NA">PNB NetBanking</option><option value="RSD-DIRECT">Rajasthan State Co-operative Bank-Debit Card</option><option value="SWB-NA">Saraswat Bank NetBanking</option><option value="SBJ-NA">SB Bikaner and Jaipur NetBanking</option><option value="SBH-NA">SB Hyderabad NetBanking</option><option value="SBM-NA">SB Mysore NetBanking</option><option value="SBT-NA">SB Travancore NetBanking</option><option value="SVC-NA">Shamrao Vitthal Co-operative Bank</option><option value="SIB-NA">South Indian Bank NetBanking</option><option value="SBP-NA">State Bank of Patiala NetNanking</option><option value="SYD-NA">Syndicate Bank NetBanking</option><option value="TNC-NA">Tamil Nadu State Co-operative Bank NetBanking</option><option value="UBI-NA">Union Bank NetBanking</option><option value="UNI-NA">United Bank of India NetBanking</option><option value="VJB-NA">Vijaya Bank NetBanking</option></select>
+                                                        </div>
+                                                        <div id="dNetBnksImgs" class="dNetBnksImgs"><label><div class="banklogo mb10" title="ICICI NetBanking"><input type="radio" name="radBnk" value="ICI-NA" class="radio" onclick="fnSetNetBank(this.value, &#39;rad&#39;);"><img src="./Helper/ICI-NA.png" alt="ICICI NetBanking" onerror="jq(this).parent().append(jq(&#39;&lt;div&gt;&lt;/div&gt;&#39;).attr(&#39;class&#39;, &#39;fleft&#39;).css({ width: &#39;100px&#39;, height: &#39;25px&#39; }).html(&#39;ICICI NetBanking&#39;)); jq(this).remove();"></div></label><label><div class="banklogo mb10" title="Yes Bank NetBanking"><input type="radio" name="radBnk" value="YBK-NA" class="radio" onclick="    fnSetNetBank(this.value, &#39;rad&#39;);"><img src="./Helper/YBK-NA.png" alt="Yes Bank NetBanking" onerror="jq(this).parent().append(jq(&#39;&lt;div&gt;&lt;/div&gt;&#39;).attr(&#39;class&#39;, &#39;fleft&#39;).css({ width: &#39;100px&#39;, height: &#39;25px&#39; }).html(&#39;Yes Bank NetBanking&#39;)); jq(this).remove();"></div></label><label><div class="banklogo mb10" title="HDFC Bank NetBanking"><input type="radio" name="radBnk" value="HDF-NA" class="radio" onclick="    fnSetNetBank(this.value, &#39;rad&#39;);"><img src="./Helper/HDF-NA.png" alt="HDFC Bank NetBanking" onerror="jq(this).parent().append(jq(&#39;&lt;div&gt;&lt;/div&gt;&#39;).attr(&#39;class&#39;, &#39;fleft&#39;).css({ width: &#39;100px&#39;, height: &#39;25px&#39; }).html(&#39;HDFC Bank NetBanking&#39;)); jq(this).remove();"></div></label><label><div class="banklogo mb10" title="Citibank NetBanking"><input type="radio" name="radBnk" value="CIT-NA" class="radio" onclick="    fnSetNetBank(this.value, &#39;rad&#39;);"><img src="./Helper/CIT-NA.png" alt="Citibank NetBanking" onerror="jq(this).parent().append(jq(&#39;&lt;div&gt;&lt;/div&gt;&#39;).attr(&#39;class&#39;, &#39;fleft&#39;).css({ width: &#39;100px&#39;, height: &#39;25px&#39; }).html(&#39;Citibank NetBanking&#39;)); jq(this).remove();"></div></label><label><div class="banklogo mb10" title="SBI NetBanking"><input type="radio" name="radBnk" value="SBI-NA" class="radio" onclick="    fnSetNetBank(this.value, &#39;rad&#39;);"><img src="./Helper/SBI-NA.png" alt="SBI NetBanking" onerror="jq(this).parent().append(jq(&#39;&lt;div&gt;&lt;/div&gt;&#39;).attr(&#39;class&#39;, &#39;fleft&#39;).css({ width: &#39;100px&#39;, height: &#39;25px&#39; }).html(&#39;SBI NetBanking&#39;)); jq(this).remove();"></div></label><label><div class="banklogo mb10" title="Standard Chartered Bank"><input type="radio" name="radBnk" value="SCB-NA" class="radio" onclick="    fnSetNetBank(this.value, &#39;rad&#39;);"><img src="./Helper/SCB-NA.png" alt="Standard Chartered Bank" onerror="jq(this).parent().append(jq(&#39;&lt;div&gt;&lt;/div&gt;&#39;).attr(&#39;class&#39;, &#39;fleft&#39;).css({ width: &#39;100px&#39;, height: &#39;25px&#39; }).html(&#39;Standard Chartered Bank&#39;)); jq(this).remove();"></div></label><label><div class="banklogo mb10" title="AXIS Bank NetBanking"><input type="radio" name="radBnk" value="UTI-NA" class="radio" onclick="    fnSetNetBank(this.value, &#39;rad&#39;);"><img src="./Helper/UTI-NA.png" alt="AXIS Bank NetBanking" onerror="jq(this).parent().append(jq(&#39;&lt;div&gt;&lt;/div&gt;&#39;).attr(&#39;class&#39;, &#39;fleft&#39;).css({ width: &#39;100px&#39;, height: &#39;25px&#39; }).html(&#39;AXIS Bank NetBanking&#39;)); jq(this).remove();"></div></label><label><div class="banklogo mb10" title="Kotak NetBanking"><input type="radio" name="radBnk" value="162-NA" class="radio" onclick="    fnSetNetBank(this.value, &#39;rad&#39;);"><img src="./Helper/162-NA.png" alt="Kotak NetBanking" onerror="jq(this).parent().append(jq(&#39;&lt;div&gt;&lt;/div&gt;&#39;).attr(&#39;class&#39;, &#39;fleft&#39;).css({ width: &#39;100px&#39;, height: &#39;25px&#39; }).html(&#39;Kotak NetBanking&#39;)); jq(this).remove();"></div></label><label><div class="banklogo mb10" title="IDBI Bank NetBanking"><input type="radio" name="radBnk" value="IDB-NA" class="radio" onclick="    fnSetNetBank(this.value, &#39;rad&#39;);"><img src="./Helper/IDB-NA.png" alt="IDBI Bank NetBanking" onerror="jq(this).parent().append(jq(&#39;&lt;div&gt;&lt;/div&gt;&#39;).attr(&#39;class&#39;, &#39;fleft&#39;).css({ width: &#39;100px&#39;, height: &#39;25px&#39; }).html(&#39;IDBI Bank NetBanking&#39;)); jq(this).remove();"></div></label></div>
+                                                        <div class="fleft obank">
+                                                            <span id="dOtherNBTag" class="txtname">Select Other Banks : </span>
+                                                            <select id="dNetBnksDrop" onchange="fnSetNetBank(this.value, &#39;cmb&#39;);"><option value="">=== Other Banks ===</option><option value="ALB-NA">Allahabad Bank NetBanking</option><option value="ADB-NA">Andhra Bank</option><option value="BBK-NA">Bank of Bahrain and Kuwait NetBanking</option><option value="BBC-NA">Bank of Baroda Corporate NetBanking</option><option value="BBR-NA">Bank of Baroda Retail NetBanking</option><option value="BOI-NA">Bank of India NetBanking</option><option value="BOM-NA">Bank of Maharashtra NetBanking</option><option value="CSB-NA">Catholic Syrian Bank NetBanking</option><option value="CBI-NA">Central Bank of India</option><option value="CUB-NA">City Union Bank NetBanking</option><option value="CRP-NA">Corporation Bank</option><option value="DBK-NA">Deutsche Bank NetBanking</option><option value="DCB-NA">Development Credit Bank</option><option value="DLB-NA">Dhanlaxmi Bank NetBanking</option><option value="FBK-NA">Federal Bank NetBanking</option><option value="IDS-NA">Indusind Bank NetBanking</option><option value="IOB-NA">Indian Overseas Bank</option><option value="ING-NA">ING Vysya Bank NetBanking</option><option value="JKB-NA">Jammu and Kashmir NetBanking</option><option value="KBL-NA">Karnataka Bank NetBanking</option><option value="KVB-NA">Karur Vysya Bank NetBanking</option><option value="LVR-NA">Lakshmi Vilas Bank NetBanking</option><option value="OBC-NA">Oriental Bank of Commerce NetBanking</option><option value="CPN-NA">PNB Corporate NetBanking</option><option value="PNB-NA">PNB NetBanking</option><option value="RSD-DIRECT">Rajasthan State Co-operative Bank-Debit Card</option><option value="SWB-NA">Saraswat Bank NetBanking</option><option value="SBJ-NA">SB Bikaner and Jaipur NetBanking</option><option value="SBH-NA">SB Hyderabad NetBanking</option><option value="SBM-NA">SB Mysore NetBanking</option><option value="SBT-NA">SB Travancore NetBanking</option><option value="SVC-NA">Shamrao Vitthal Co-operative Bank</option><option value="SIB-NA">South Indian Bank NetBanking</option><option value="SBP-NA">State Bank of Patiala NetNanking</option><option value="SYD-NA">Syndicate Bank NetBanking</option><option value="TNC-NA">Tamil Nadu State Co-operative Bank NetBanking</option><option value="UBI-NA">Union Bank NetBanking</option><option value="UNI-NA">United Bank of India NetBanking</option><option value="VJB-NA">Vijaya Bank NetBanking</option></select>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <!-- Sign in -->
+                                                    <div id="dNBSaveDet" class="brgr lpaybl" style="display: none;">
+                                                        <div>
+                                                            <label>
+                                                                <input type="checkbox" id="chkSaveNBAsk"> <!-- Expand the below section on check -->
+                                                                <span class="ic-qpay qpaybig"></span>
+                                                            </label>
+                                                            <p>Save this netbanking option to my OurCheckout account and make faster payments.</p>
+                                                        </div>
+                                                        <div class="mypaylog" id="dSaveNBDet" style="display: none; padding: 0px; width: auto;">
+                                                            <!-- The div needs to be expanded when the above checkbox is checked -->
+                                                            <!-- Card to be saved as soon as checkbox is checked (not on button click) and hide the section -->
+                                                            <!--div class="fl_100 mb10">
+                                                                   <label><input type="checkbox" value="" id="chkSaveNB">&nbsp;Yes, I accept the <a href="http://sapient.com/static/terms/" target="_blank">Terms &amp; Conditions</a></label>
+                                                            </div-->
+                                                        </div>
+                                                        <div style="margin: 20px; width: 408px; text-align: center; display: none;" class="fl_100 mb10" id="dSaveNBThanks">Thanks! Your card is saved.</div><!-- Show this div when card is successfully saved. Show the strException message if blnSuccess is false -->
+                                                    </div>
+                                                    <!-- Guest -->
+                                                    <div id="dNBGuestSave" class="brgr lpaybl" style="" onclick="fnReqLogin({ from: &#39;nbsave&#39; });">
+                                                        <div>
+                                                            <input type="checkbox" onchange="if(objCk.get({ name: &#39;ld&#39; }) == &#39;&#39;) { jq(this).attr(&#39;checked&#39;, false); }">
+                                                            <span class="ic-qpay qpaybig"></span>
+                                                            <p>Save this netbanking option to my OurCheckout account and make faster payments.</p>
+                                                        </div>
+                                                    </div>
+                                                    <div id="errDivNB" class="error mypagerr" style="display:none; margin-top:0px;"></div>
+                                                    <!-- NetBanking Section - END -->
+                                                </div>
+                                                <!--<div id="dCCOD" class="cmnhgt" style="display: none;">
+                                                       Cash on Delivery Section
+                                                </div>-->
+                                                <div id="dCPayPal" class="cmnhgt" style="display: none;">
+                                                    <div class="pptab">
+                                                        <img src="./Helper/paypal.jpg" class="fleft">
+                                                        <div class="fleft" style="width: 245px; margin: 10px 0 0 12px; line-height: 25px;">
+                                                            <span class="fl_100">You will be charged <strong><span id="dPriceUSD">...</span> approx</strong></span>
+                                                            PayPal is only for international customers.<br>
+                                                            You will be charged in terms of USD.
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="clear">&nbsp;</div>
+                                                    <div class="fl_100">
+                                                        <div style="background-color: #FFFACC; padding: 10px;">
+                                                            <div class="erricon ic-warn" style="color: #E0BB00;"></div>
+                                                            <div class="errtxt">
+                                                                Only verified PayPal users are allowed to transact using PayPal.
+                                                                <div class="clear">&nbsp;</div>
+                                                                <a href="https://www.paypal.com/cgi-bin/webscr?cmd=p/acc/seal-CA-unconfirmed-outside" target="_blank">Click here</a> for more information.
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="clear">&nbsp;</div>
+                                                    <div class="clear">&nbsp;</div>
+                                                    <div id="errDivPP" class="error mypagerr" style="display:none;"></div>
+                                                </div>
+                                                <div id="dCCshCrd" class="cmnhgt dCCshCrd" style="display: none;">
+
+                                                    <!-- Cash Card Section - BEGIN -->
+                                                    <div class="mb10 fl_100">
+                                                        <div class="txtname">Payment Mode :</div>
+                                                        <div class="fleft">
+                                                            <select id="cmbCashCardType" class="wt150">
+                                                                <option value="ATL-NA" selected="selected">Airtel Money</option>
+                                                                <!--option value="AMEXEZE">American Express ezeClick</option-->
+                                                                <option value="DONE">Done</option>
+                                                                <option value="IMS-NA">IMPS</option>
+                                                                <option value="ITZCASH">Itz Cash</option>
+                                                                <option value="MOBIKWIK">MobiKwik</option>
+                                                                <option value="OXI">Oxigen Wallet</option>
+                                                                <option value="PAYUWALLET-Payuw">PayUMoney</option>
+                                                                <option value="PCH-NA">Paycash Card</option>
+                                                                <option value="VM2-NA">Vodafone m-pesa�</option>
+                                                                <option value="YPAY-NA">YPayCash</option>
+                                                                <option value="ZPG-NA">ZipCash</option>
+                                                                <!-- EXPIRED -->
+                                                                <!--option value="MCHEK">mChek</option-->
+                                                                <!--option value="PAYMATE">PayMate</option-->
+                                                                <!--option value="OXICARD">OxiCash Card</option-->
+                                                                <!--option value="BEAM">Beam</option-->
+                                                                <!--option value="IMINTCARD">Imint</option-->
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div id="liOxi" class="fl_100" style="display: none;">
+                                                        <div class="mb10 fl_100">
+                                                            <div class="txtname">Name :</div>
+                                                            <div class="fleft">
+                                                                <input type="text" id="txtOxiName" class="textbox" style="width: 180px;" maxlength="15" value="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="mb10 fl_100">
+                                                            <div class="txtname">Mobile No :</div>
+                                                            <div class="fleft">
+                                                                <input type="text" value="+91" class="textbox" readonly="readonly" disabled="disabled" style="width: 23px; border-right: none;"><input type="text" id="txtOxiCardNo" class="textbox" style="width: 95px; border-left: none;" maxlength="10" value="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="mb10 fl_100">
+                                                            <div class="txtname">Password :</div>
+                                                            <div class="fleft">
+                                                                <input type="password" id="txtOxiPwd" class="textbox" style="width: 95px;" maxlength="6" value="">
+                                                            </div>
+                                                        </div>
+                                                        <div><img src="./Helper/oxi-cash-new.jpg" width="75" height="25" alt="">&nbsp;&nbsp;<img src="./Helper/oxi-secure-new.jpg" width="75" height="25" alt=""></div>
+                                                    </div>
+
+                                                    <div id="liOxiCard" class="fl_100" style="display: none;">
+                                                        <div class="mb10 fl_100">
+                                                            <div class="txtname">Name :</div>
+                                                            <div class="fleft">
+                                                                <input type="text" id="txtOxiCardName" class="textbox" style="width: 180px;" maxlength="15" value="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="mb10 fl_100">
+                                                            <div class="txtname">Card No :</div>
+                                                            <div class="fleft">
+                                                                <input type="text" id="txtOxiCardCardNo" class="textbox" style="width: 95px;" maxlength="12" value="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="mb10 fl_100">
+                                                            <div class="txtname">Password :</div>
+                                                            <div class="fleft">
+                                                                <input type="password" id="txtOxiCardPwd" class="textbox" style="width: 95px;" maxlength="6" value="">
+                                                            </div>
+                                                        </div>
+                                                        <div><img src="./Helper/oxi-cash.jpg" width="75" height="25" alt="">&nbsp;&nbsp;<img src="./Helper/oxi-secure.jpg" width="75" height="25" alt=""></div>
+                                                    </div>
+
+                                                    <div id="liItz" class="fl_100" style="display: none;">
+                                                        <div class="mb10 fl_100">
+                                                            <div class="txtname">Name :</div>
+                                                            <div class="fleft">
+                                                                <input type="text" id="txtItzCashName" class="textbox" style="width: 180px;" maxlength="150" value="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="fl_100 mb10"><img src="./Helper/itz-cash.jpg" width="75" height="25" alt=""></div>
+                                                    </div>
+
+                                                    <div id="liBeam" class="fl_100" style="display: none;">
+                                                        <div class="mb10 fl_100">
+                                                            <div class="txtname">Name :</div>
+                                                            <div class="fleft">
+                                                                <input type="text" id="txtBeamName" class="textbox" style="width: 180px;" maxlength="150" value="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="mb10 fl_100">
+                                                            <div class="txtname">User Name :</div>
+                                                            <div class="fleft">
+                                                                <input type="text" id="txtBeamCardNo" class="textbox" style="width: 95px;" maxlength="10" value="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="mb10 fl_100">
+                                                            <div class="txtname">Password :</div>
+                                                            <div class="fleft">
+                                                                <input type="password" id="txtBeamPwd" class="textbox" style="width: 95px;" maxlength="6" value="">
+                                                            </div>
+                                                        </div>
+                                                        <div><img src="./Helper/beam.jpg" width="75" height="25" alt=""></div>
+                                                    </div>
+
+                                                    <!-- Div for Airtel Money -->
+                                                    <div id="liAirtel" class="fl_100">
+                                                        <div class="fl_100">
+                                                            <img src="./Helper/airtel_money_small_logo.jpg" alt="Airtel Money">
+                                                            <!--div class="clear">&nbsp;</div>
+                                                            <strong>Get 25% cash back on movie tickets through Airtel Money</strong>
+                                                            <div class="clear">&nbsp;</div>
+                                                            Now get Cash-Back of 25% on booking movie tickets through Airtel Money on OurCheckout.
+                                                            Cash-Back amount will be calculated on the total value of the transaction deducted from
+                                                            the customer's Airtel Money wallet. Maximum Cash-Back per month per Airtel Money wallet
+                                                            is Rs.100/-. An Airtel Money wallet holder can avail this offer only one time in a month.
+                                                            <a href="http://sapient.com/static/offertc-airtel-money/" target="_blank">Terms &amp; Conditions</a-->
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Div for Amex ezeClick -->
+                                                    <div id="liAmexExeClick" class="fl_100" style="display: none;">
+                                                        <div class="fl_100">
+                                                            <div class="fleft">
+                                                                <img src="./Helper/amex_ezeclick.png" height="45">
+                                                            </div>
+                                                            <div class="fleft" style="margin: 5px 0 0 6px; line-height: 13px; font-size: 11px; width: 220px; font-weight: bold;">
+                                                                One ID is all it takes. <br>
+                                                                Exclusively for American Express Cardmembers. <br>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="clear">&nbsp;</div>
+                                                        <div class="clear">&nbsp;</div>
+
+                                                        <div class="fl_100">
+                                                            ezeClick provides American Express Cardmembers with an easy and fast method to
+                                                            complete their online purchase. All you need to do is create a unique ID - a one-time
+                                                            process. You will not have to refer to your card plastic for any future online transactions.
+                                                            You need to simply enter the ezeClick User ID. The transaction process is fast, safe and secure.
+                                                            Also, you get to Sync multiple American Express Cards to this account.
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Div for PayUMoney -->
+                                                    <div id="liPayUMoney" class="fl_100" style="text-align:center; display: none;">
+                                                        <p class="mb10">Supports all Credit Cards, Debit Cards and NetBanking Options</p>
+                                                        <p class="mb10 fl_100" style="margin-left:100px;">
+                                                            <span class="fleft mastercard" style="margin-right:5px;"></span>
+                                                            <span class="fleft maestro" style="margin-right:5px;"></span>
+                                                            <span class="fleft visa" style="margin-right:5px;"></span>
+                                                            <!--span class="fleft amex" style="margin-right:5px;"></span-->
+                                                            <span class="fleft" style="margin:5px;"><img alt="PayU Netbanking" src="./Helper/net-banking-logo.png"></span>
+                                                        </p>
+                                                        <p style="font-size:18px;" class="bold mb10">Pay using PayUMoney to get upto 10% Cashback</p>
+                                                        <!--p style="font-size:18px; color:#D81B22;" class="bold mb10">5% Cashback</p-->
+                                                        <p class="mb10">* Maximum Cashback Rs.50 Per Transaction</p>
+                                                        <p class="mb10">In the next step you will be asked to enter Card or NetBanking Details</p>
+                                                    </div>
+
+                                                    <!-- Div for Vodafone m-pesa -->
+                                                    <div id="liVM2" class="fl_100" style="display:none;">
+                                                        <div class="fl_100">
+                                                            <img src="./Helper/m_pesa_logo.jpg" width="95" alt="Vodafone m-pesa">
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Div for MobiKwik -->
+                                                    <div id="liMobiKwik" class="fl_100" style="display: none;">
+                                                        <div class="mb10 fl_100">
+                                                            <div class="txtname">Email :</div>
+                                                            <div class="fleft">
+                                                                <input type="text" id="txtMobiKwikEmail" class="textbox" style="width: 180px;" value="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="mb10 fl_100">
+                                                            <div class="txtname">Mobile :</div>
+                                                            <div class="fleft">
+                                                                <input type="text" style="width: 23px; border-right: none;" disabled="disabled" readonly="readonly" class="textbox" value="+91">
+                                                                <input type="text" id="txtMobiKwikMobile" value="" maxlength="10" style="width: 149px; border-left: none;" class="textbox">
+                                                            </div>
+                                                        </div>
+                                                        <div class="fl_100">
+                                                            <img src="./Helper/mobikwik-logo.png" alt="MobiKwik">
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Div for PayCash Card -->
+                                                    <div id="liPayCashCard" class="fl_100" style="display:none;">
+                                                        <div class="fl_100">
+                                                            <img src="./Helper/paycashcard_small_logo.jpg" alt="Paycash Card">
+                                                            <div class="clear">&nbsp;</div>
+                                                            <strong>Get 30% cash back on tickets through Paycash</strong>
+                                                            <div class="clear">&nbsp;</div>
+                                                            Now get Cash-Back of 30% on booking tickets through Paycash on OurCheckout. Maximum Cash-Back
+                                                            per month per Paycash card is Rs.50/- Paycash card holder can avail this offer only one time
+                                                            in a month. The Cash-back offer will be from Paycash. The Cash-back shall be credited in the
+                                                            Paycash Card within seven to Ten working days from the day of transaction.
+                                                            <a href="http://sapient.com/static/paycash-offer/" target="_blank">Terms &amp; Conditions</a>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Div for YPayCash -->
+                                                    <div id="liYPayCash" class="fl_100" style="display:none;">
+                                                        <div class="fl_100"><img src="./Helper/ypay-cash-card-logo.png" alt="YPayCash" width="95"></div>
+                                                    </div>
+
+                                                    <div id="liDone" class="fl_100" style="display: none;">
+                                                        <div class="mb10 fl_100">
+                                                            <div class="txtname">Name :</div>
+                                                            <div class="fleft">
+                                                                <input type="text" id="txtDoneName" class="textbox" style="width: 180px;" maxlength="15" value="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="mb10 fl_100">
+                                                            <div class="txtname">Card No :</div>
+                                                            <div class="fleft">
+                                                                <input type="text" id="txtDoneCardNo" class="textbox" style="width: 95px;" maxlength="14" value="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="mb10 fl_100">
+                                                            <div class="txtname">Password :</div>
+                                                            <div class="fleft">
+                                                                <input type="password" id="txtDonePwd" class="textbox" style="width: 95px;" maxlength="4" value="">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div id="errDivCC" class="error mypagerr" style="display:none;"></div>
+                                                    <!-- Cash Card Section - END -->
+
+                                                </div>
+                                                <div id="dCGftVchr" class="dCGftVchr" style="display: none;">
+                                                    <!-- Gift Voucher Section - BEGIN -->
+                                                    <div class="mb10 fl_100">
+                                                        <div id="cardSumm" class="fl_100 mt10 mb10" style="font-weight: bold; display: none;"></div>
+                                                        <div class="fleft">
+                                                            <div id="dAddGV" class="txtname fleft mr20 mt10 mb10" style="width: auto;">Enter your GV number : </div>
+                                                            <div id="dGvData" class="fleft">
+                                                                <input type="text" id="txtGVCode" style="width: 130px;" class="textbox" value="" maxlength="16">
+                                                            </div>
+                                                            &nbsp;
+                                                            <a id="lnkGV" href="javascript:;" onclick="fnApplyGV();" class="btn">Apply</a>
+                                                            <div id="otherOptions" class="fl_100 mb10 mt10" style="font-weight: bold; display: none;">
+                                                                OR Choose any of following payment options:
+                                                                <div class="clear">&nbsp;</div>
+                                                                -&gt; Debit / Card Card
+                                                                <div class="clear">&nbsp;</div>
+                                                                -&gt; NetBanking
+                                                                <div class="clear">&nbsp;</div>
+                                                                -&gt; Cash Cards/Mobile
+                                                                <div class="clear">&nbsp;</div>
+                                                            </div>
+                                                            <div id="dGVSuff" class="fl_100 mb10 mt10" style="font-weight: bold; display: none;">
+                                                                Your Gift Voucher is now sufficient for this transaction.
+                                                                <div class="clear">&nbsp;</div>
+                                                                Click on the below Pay Now button to complete the transaction.
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div id="errDivGV" class="error mypagerr" style="display:none;"></div>
+                                                    <!-- Gift Voucher Section - END -->
+                                                </div>
+                                                <div id="dCRdmPnts" class="dCRdmPnts" style="display: none;">
+                                                    <!-- Redeem Points Section - BEGIN -->
+                                                    <div class="mb10 fl_100 bold">You can pay by redeeming your Reward Points</div>
+
+                                                    <div class="mb10 fl_100">
+                                                        <div class="txtname">Select Reward :</div>
+                                                        <div class="fleft">
+                                                            <select id="txtBnkCitiReward" class="fleft">
+                                                                <option value="" selected="">Select Reward</option>
+                                                                <option value="CIT-DIRECT">Citibank Reward Points</option>
+                                                                <option value="IMINTCARD">PAYBACK Reward Points</option>
+                                                            </select>
+                                                            <div class="fleft" style="margin:0px 5px;">
+                                                                <img src="./Helper/payback.jpg" alt="" height="20" align="top">
+                                                                <img src="./Helper/citi-logo.jpg" alt="" height="18" align="top">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div id="liCashCard" class="mb10 fl_100">Pay by your reward points for any purchase on OurCheckout</div>
+
+                                                    <div id="liImint" class="mb10 fl_100" style="display: none;">
+                                                        <div class="txtname">Name :</div>
+                                                        <div class="fleft mb10">
+                                                            <input type="text" id="txtImintName" class="textbox" style="width: 180px;" maxlength="16" value="">
+                                                        </div>
+                                                        <div class="fl_100 mb10">
+                                                            You can now redeem your PAYBACK reward points against any purchase on OurCheckout.<br>
+                                                            Conversion Ratio: 4 Points = 1 Re.<br>
+                                                            You will be redirected to PAYBACK Payment Gateway for your transaction.
+                                                        </div>
+                                                        <div class="clear">&nbsp;</div>
+                                                        <div class="fl_100">
+                                                            <strong>Check your PAYBACK points:</strong>
+                                                            <hr class="mb10">
+                                                            <div class="fleft mt10">PAYBACK / Mobile Number : &nbsp;</div>
+                                                            <input type="text" id="txtCheckPaybackNo" class="textbox" style="width: 155px; text-align: center;" maxlength="16" value="">
+
+                                                            <div class="fleft mt10" style="display: none;">&nbsp; Pin: &nbsp;</div>
+                                                            <input type="password" id="txtCheckPaybackPin" class="textbox" style="width: 50px; text-align: center; display: none;" maxlength="4" value="0000">
+
+                                                            &nbsp;&nbsp;<a class="button yellow" href="javascript:;" onclick="fnCheckPaybackPoints();" style="padding: 5px 25px;">Check</a>
+                                                            <div id="dPaybackStatus" class="error mypagerr" style="display:none;"></div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div id="liCityRewards" class="mb10 fl_100" style="display: none;">
+                                                        You can now redeem your Citibank Card reward points against any purchases on OurCheckout.<br>
+                                                        You need to have a minimum balance of 250 points.<br>
+                                                        Conversion Ratio depends upon your card type.<br>
+                                                        You will be redirected to Citibank's Payment Gateway for your transaction.
+                                                    </div>
+
+                                                    <div id="errDivRP" class="error mypagerr" style="display:none;"></div>
+                                                    <!-- Redeem Points Section - END -->
+                                                </div>
+                                                <div id="dCCOD" class="dCRdmPnts" style="display: none;">
+                                                    <!-- COD Section - BEGIN -->
+                                                    <div class="mb10 fl_100 bold">You can pay by cash on delivery</div>
+
+
+                                                    <!-- COD Section - END -->
+                                                </div>
+                                                <div id="dCQRpay" class="dCRdmPnts" style="display: none;">
+                                                    <!-- QR pay Section - BEGIN -->
+                                                    <div class="mb10 fl_100 bold">You can pay by QR code</div>
+
+
+                                                    <!-- QR pay Section - END -->
+                                                </div>
+                                            </div>
+                                            <div id="dCheckMkPayBtn" class="dCheckMkPayBtn">
+                                                <label class="termsmsg">
+                                                    <input style="display:none;" id="chkPolicyTick" type="checkbox" class="techeck" checked="checked" onchange="jq(&#39;#chkPolicyTick&#39;).attr(&#39;checked&#39;, true);">
+                                                    <span>By clicking "Pay Now" you agree to the <a target="_blank" href="http://sapient.com/static/terms/">terms and conditions</a></span>
+                                                </label>
+                                                <div id="dvUNormalPrcdBtn" class="fright">
+                                                    <a id="btnMakePayment" href="javascript:;" class="btn paybtn" data-onclick="fnPayCard();">PAY NOW</a>
+                                                </div>
+                                            </div>
+                                            <div id="dTimedOut" class="fl_100 timeout" style="display: none;">
+                                                Transaction has timed out! <a onclick="fnCanTr();" href="javascript:;"><strong>Click to go home</strong></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--SECURED ICONS-->
+                            <div class="bnklogo">
+                                <a class="entrust" target="_blank" href="https://www.entrust.net/customer/profile.cfm?domain=sapient.com"></a>
+                                <a class="sisa" onfocus="this.blur()" onclick="window.open(this.href,&#39;Sisa_Certificate&#39;,&#39;height=685,width=670,scrollbar=yes,status=no,menubar=no,toolbar=no,resizable&#39;); return false" href="http://sisainfosec.com/site/certificate/33534332810034520997"></a>
+                                <span class="btmvisa"></span>
+                                <span class="btmmaster"></span>
+                                <span class="axp"></span>
+                            </div>
+                            <!-- Discount Coupons and Offers Section - BEGIN -->
+                            <!--Redeem Point-->
+                            <div id="offCont" class="blocks">
+                                <div>
+                                    <!--div class="phead poffers" id="offCont"-->
+                                    <div class="phead poffers" hidden="hidden">
+                                        <div class="checkbox availoff">
+                                            <label>
+                                                <input id="chkOffers" type="checkbox">
+                                                Avail Discounts &amp; Offers
+                                            </label>
+                                        </div>
+                                        <span class="caret-u-g" data-role="arrow"></span>
+                                    </div>
+                                    <div class="pcontent ocontent" id="dOffersSec" style="display:none;">
+                                        <div class="pOffersSec">
+                                            <div class="fl_100">
+                                                <select id="cmbDiscOff" style="width: 135px;">
+                                                    <option value="">Select Offer</option>
+                                                    <option value="OFF">Offers</option>
+                                                    <option value="WP">WinPin</option>
+                                                    <option value="MM">Movie Money</option>
+
+                                                    <option value="VODAFN0312">Vodafone Delight</option>
+                                                    <option value="VODAAP0214">Vodafone Tuesdays Offer</option>
+                                                    <option value="IDEA1113">Idea Matinee Offer</option>
+                                                </select>
+                                                <div id="dOffers" class="fleft mr20" style="display: none;">
+                                                    <select id="cmbOffer" class="mr20" style="width: 293px;">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                        <option value="">== Select Offer ==</option>
+                                                        <option value="DBS0514" data-offertype="DebitCreditCard" data-bankcode="">DBS Bank Debit Card Offer</option>
+                                                        <option value="MAST0514" data-offertype="DebitCreditCard" data-bankcode="">MasterCard Debit Card Offer</option>
+                                                        <option value="HTC0314" data-offertype="DebitCreditCard" data-bankcode="">Times Card Offer</option>
+                                                        <option value="SCB1213" data-offertype="DebitCreditCard" data-bankcode="">Standard Chartered Bank Debit Card Offer</option>
+                                                        <option value="NCPA1013" data-offertype="DebitCreditCard" data-bankcode="">MasterCard NCPA Offer</option>
+                                                        <option value="SBI0613" data-offertype="DebitCreditCard" data-bankcode="">SBI Signature Credit Card Rs 500 Off</option>
+                                                        <option value="ICI0611" data-offertype="DebitCreditCard" data-bankcode="">ICICI Bank Buy 1 Get 1 Offer - Credit</option>
+                                                        <option value="ICICOR0813" data-offertype="DebitCreditCard" data-bankcode="">ICICI Bank Buy 1 Get 1 Offer - Debit</option>
+                                                        <option value="ICI0811" data-offertype="DebitCreditCard" data-bankcode="">ICICI Bank Rs 100 Off</option>
+                                                        <option value="DSCHBOGO" data-offertype="DebitCreditCard" data-bankcode="">IndusInd Bank Credit Card Offer</option>
+                                                        <option value="VISIN0511" data-offertype="DebitCreditCard" data-bankcode="">IndusInd Bank Exclusive and Select Debit Card Offer</option>
+                                                        <option value="VSBOGO1111" data-offertype="DebitCreditCard" data-bankcode="">Visa Blockbuster Weekend Offer</option>
+                                                        <option value="DEUT0512" data-offertype="DebitCreditCard" data-bankcode="">Deutsche Bank Rs 200 Off</option>
+                                                        <option value="CITIBOGODB" data-offertype="DebitCreditCard" data-bankcode="">Citibank The Second is Free Offer</option>
+                                                        <option value="INDUS0313" data-offertype="DebitCreditCard" data-bankcode="">IndusInd Bank Indulge Credit Card 20% Off</option>
+                                                    </select>
+                                                    <a href="javascript:;" class="btn" onclick="fnApplyOffer(); ga(&#39;send&#39;, &#39;pageview&#39;, &#39;apply-offer&#39;);" style="margin-right: 10px;">Apply Offer</a>
+                                                    <!--a href="http://sapient.com/static/terms/" target="_blank">Terms &amp; Conditions</a-->
+                                                </div>
+                                                <div style="display:none;" id="dOffCodeSec">
+                                                    <input class="offtext" type="text" maxlength="16" id="txtWPMMCode">
+                                                    <a onclick="fnApplyOffer(); ga(&#39;send&#39;, &#39;pageview&#39;, &#39;apply-offer&#39;);" class="btn" href="javascript:;">APPLY OFFER</a>
+                                                </div>
+                                                <div id="errDivOf" class="error mypagerr" style="display:none;"></div>
+
+                                                <div id="dOfferNotes" class="fl_100 Poffernotes">
+                                                    <div id="YESNB0214" class="offNote">
+                                                        <strong>Yes Bank Net Banking Offer</strong>
+                                                        <br>
+                                                        Yes Bank Net Banking Offer - Buy one ticket and Get one free!! <br>
+                                                        Offer valid through YES BANK Net Banking.
+                                                        <a href="http://sapient.com/static/yes-bank-offers/" target="_blank">Terms &amp; Conditions</a>
+                                                    </div>
+                                                    <div id="HTC0314" class="offNote">
+                                                        <strong>Times Card Offer</strong>
+                                                        <br>
+                                                        Get a 25% discount on movie tickets. Max discount per transaction INR 350. Total tickets available under this offer capped at 4 tickets/card/month.
+                                                        <a href="http://sapient.com/static/hdfc-times-card-movie-offer/" target="_blank">Terms &amp; Conditions</a>
+                                                    </div>
+                                                    <div id="DBS0514" class="offNote">
+                                                        <strong>DBS Bank Debit Card Offer</strong>
+                                                        <br>
+                                                        Get 35% off on movie and Play tickets booked with your DBS Bank Platinum Debit Card.
+                                                        Get 50% off on movie and Play tickets booked with your DBS Bank Signature and Infinite Debit Card.
+                                                        Offer valid till 6th May, 2015.
+                                                        <a href="http://sapient.com/static/dbs-bank-movie-offers/" target="_blank">Terms &amp; Conditions</a>
+                                                    </div>
+                                                    <div id="MAST0514" class="offNote">
+                                                        <strong>MasterCard Debit Card Offer</strong>
+                                                        <br>
+                                                        Rs.50 off for first time MasterCard Debit Card transactors on BMS. Minimum 2 tickets to be purchased to avail the offer. Offer valid till 30th April, 2015.
+                                                        <a href="http://sapient.com/static/mastercard-debit-card-rs-50-off-offer/" target="_blank">Terms &amp; Conditions</a>
+                                                    </div>
+                                                    <div id="SCB1213" class="offNote">
+                                                        <strong>Standard Chartered Bank Debit Card Offer</strong>
+                                                        <br>
+                                                        Get Rs.100 off on 2 movie tickets using your Standard Chartered Bank Debit Card.
+                                                        <br>
+                                                        Max discount of Rs.100 per month.
+                                                        <a href="http://sapient.com/static/standard-chartered-bank-offer/" target="_blank">Terms &amp; Conditions</a>
+                                                    </div>
+                                                    <div id="OMG1213" class="offNote">
+                                                        <strong>Citibank OMG Offer</strong>
+                                                        <br>
+                                                        Get a flat 50% off on movie tickets with Citibank Credit &amp; Debit Cards.
+                                                        <br>
+                                                        Max discount of Rs.150 per transaction. Valid on 4th to 5th Dec. <a href="http://sapient.com/static/citibank-omg-sale/" target="_blank">Terms &amp; Conditions</a>
+                                                    </div>
+                                                    <div id="CITI1113" class="offNote">
+                                                        <strong>Citibank Credit Card Offer</strong>
+                                                        <br>
+                                                        Buy two movie tickets with your Citibank Credit Card and get 50% off on a transaction.
+                                                        <br>
+                                                        A cardholder can avail the offer only upto 4 times in the offer period. Thus a maximum savings of Rs.1000/- per Citibank credit card will be provided to Customers.
+                                                        <a href="http://sapient.com/static/citi-bank-credit-card-offers/" target="_blank">Terms &amp; Conditions</a>
+                                                    </div>
+                                                    <div id="HDFC1013" class="offNote">
+                                                        <strong>HDFC Bank Credit Card Offer</strong>
+                                                        <br>
+                                                        Get a flat 5% off on movie tickets using your HDFC Bank Credit Card.
+                                                        <br>
+                                                        A cardholder can avail the offer upto 2 times in a month. A maximum discount of Rs.50 can be availed per transaction under this offer.
+                                                        <a href="http://sapient.com/static/hdfc-credit-card-offers/" target="_blank">Terms &amp; Conditions</a>
+                                                    </div>
+                                                    <div id="NCPA1013" class="offNote">
+                                                        <strong>MasterCard NCPA Offer</strong>
+                                                        <br>
+                                                        10% off on NCPA tickets on your MasterCard Platinum, Titanium and World (Debit &amp; Credit Card)
+                                                        <br>
+                                                        The discount is valid on a maximum of 4 tickets per transaction.
+                                                        <a href="http://sapient.com/static/mastercard-ncpa-offer/" target="_blank">Terms &amp; Conditions</a>
+                                                    </div>
+                                                    <div id="MASTER0713" class="offNote">
+                                                        <strong>MasterCard Debit card Offer</strong>
+                                                        <br>
+                                                        On Maestro &amp; Master debit cards
+                                                        A first time Mastercard Debit card user is eligible for - Take 2 offer. Buy a movie ticket &amp; get your second ticket free.
+                                                        If you've already used Mastercard previously for an offer, user is eligible for - Movie Mania Offer. Enjoy 25% off on your ticket purchases.
+                                                        <a href="http://sapient.com/static/mastercard-debit-card-offer/" target="_blank">Terms &amp; Conditions</a>
+                                                    </div>
+                                                    <!--div id="SCB0713" class="offNote">
+                                                           <strong>Get Rs.100 Off on Standard Chartered Bank</strong>
+                                                           <br/>
+                                                           Now get Rs. 100 Off on purchase of 2 or more movie tickets through your SCB Debit Card. To avail the offer enter your
+                                                           SCB Card number in the box above and click on apply button. If the user does not enter the Valid SCB Debit Card Number
+                                                           he/she would not be eligible for the offer.
+                                                           <a href="http://sapient.com/static/standard-chartered-bank-debit-card-offers/" target="_blank">Terms &amp; Conditions</a>
+                                                    </div-->
+                                                    <div id="SBI0613" class="offNote">
+                                                        <strong>Get 2 free movie tickets per month or Rs 500 off whichever is less</strong>
+                                                        <br>
+                                                        This offer is valid for SBI Signature credit card customers. Get 2 free movie tickets per month
+                                                        or Rs 500 off whichever is less. Offer valid on purchase of minimum 2 movie tickets.
+                                                        <a href="http://sapient.com/static/sbi-signature-credit-card-offers/" target="_blank">Terms &amp; Conditions</a>
+                                                    </div>
+                                                    <div id="ICI0611" class="offNote">
+                                                        <strong>On Select Credit Cards</strong>
+                                                        <br>
+                                                        Now Buy 1 Ticket and Get 1 Ticket Free for ICICI Bank Credit Cards holders.
+                                                        <br>
+                                                        To avail the offer enter your ICICI Bank Credit Card number in the box above
+                                                        and click on the "Apply" button. If the user does not enter the Credit Card No.
+                                                        he/she would not be eligible for the offer.
+                                                        <a href="http://sapient.com/static/offertc-icici-credit-cards/" target="_blank">Terms &amp; Conditions</a>
+                                                    </div>
+                                                    <div id="ICICOR0813" class="offNote">
+                                                        <strong>On Select Debit Cards</strong>
+                                                        <br>
+                                                        Now Buy 1 Ticket and Get 1 Ticket Free for ICICI Bank Coral &amp; Rubyx Debit Card holders.
+                                                        <br>
+                                                        To avail the offer enter your ICICI Bank Debit Card number in the box above and
+                                                        click on the "Apply" button. If the user does not enter the Debit Card No. he/she
+                                                        would not be eligible for the offer.
+                                                        <a href="http://sapient.com/static/icici-debit-card-movie-ticket-offers/" target="_blank">Terms &amp; Conditions</a>
+                                                    </div>
+                                                    <div id="ICI0811" class="offNote">
+                                                        <strong>On Select Credit Cards</strong>
+                                                        <br>
+                                                        Now get Rs.100 off on your ICICI Bank Credit Cards holders.
+                                                        <br>
+                                                        To avail the offer enter your ICICI Bank Credit Card number in the box above and
+                                                        click on the "Apply" button. If the user does not enter the Credit Card No. he/she
+                                                        would not be eligible for the offer.
+                                                        <a href="http://sapient.com/static/offertc-icici-rupees-100-off/" target="_blank">Terms &amp; Conditions</a>
+                                                    </div>
+                                                    <div id="DSCHBOGO" class="offNote">
+                                                        <strong>Buy 1 Get 1 Free</strong>
+                                                        <br>
+                                                        Now Buy 1 Ticket and Get 1 Ticket Free for IndusInd Bank Credit Card holders.
+                                                        <br>
+                                                        To avail the offer enter your IndusInd Bank card number in the box above and click
+                                                        on the "Apply" button. If the user does not enter the Credit Card No. he/she would
+                                                        not be eligible for the offer.
+                                                        <a href="http://sapient.com/static/offertc-indusind-credit-cards/" target="_blank">Terms &amp; Conditions</a>
+                                                    </div>
+                                                    <div id="VISIN0511" class="offNote">
+                                                        <strong>Buy 1 Get 1 Free</strong>
+                                                        <br>
+                                                        Now Buy 1 Ticket and Get 1 Ticket Free for IndusInd Bank Platinum Exclusive and
+                                                        Select Debit card holders.
+                                                        <br>
+                                                        To avail the offer enter your Debit card number in the box above and click on the
+                                                        "Apply" button. If the user does not enter the Debit Card No. he/she would not be
+                                                        eligible for the offer.
+                                                        <a href="http://sapient.com/static/offertc-indusind-debit-cards/" target="_blank">Terms &amp; Conditions</a>
+                                                    </div>
+                                                    <div id="VSBOGO1111" class="offNote">
+                                                        <strong>Buy 1 Get 1 Free on Infinite &amp; Signature Cards</strong>
+                                                        <br>
+                                                        Now Buy 1 Get 1 Free on Visa Infinite &amp; Signature Cards. To avail the offer enter
+                                                        your Visa Infinite or Signature Card number in the box above and click on the "Apply"
+                                                        button. If the user does not enter the Visa Infinite or Signature Card No. he/she would
+                                                        not be eligible for the offer.
+                                                        <a href="http://sapient.com/static/offertc-visa-blockbuster-Infinite-Signature-cards/" target="_blank">Terms &amp; Conditions</a>
+                                                    </div>
+                                                    <div id="DEUT0512" class="offNote">
+                                                        <strong>Save Rs.200/-</strong>
+                                                        <br>
+                                                        Now Get Rs.200/- Off on your first transaction using your Deutsche Bank Classic/Gold
+                                                        Debit Card holders.
+                                                        <a href="http://sapient.com/static/offertc-dsdc200off/" target="_blank">Terms &amp; Conditions</a>
+                                                    </div>
+                                                    <div id="CITIBOGODB" class="offNote">
+                                                        <strong>Buy 1 ticket get 1 free on Citibank Premium, World Debit Cards, Platinum Debit Cards and Citigold Private Client World Debit Cards.</strong>
+                                                        <br>
+                                                        Buy 1 ticket get 1 free on Citibank Premium, World Debit Cards, Platinum Debit Cards and
+                                                        Citigold Private Client World Debit Cards. To avail the offer enter your Debit Card number
+                                                        in the box above and click on the "Apply" button. If the user does not enter the Debit Card
+                                                        No. he/she would not be eligible for the offer.
+                                                        <a href="http://sapient.com/static/offertc-citi-bogo/" target="_blank">Terms &amp; Conditions</a>
+                                                    </div>
+                                                    <div id="INDUS0313" class="offNote">
+                                                        <strong>20% off on IndusInd Bank Indulge Credit Card</strong>
+                                                        <br>
+                                                        20% off on BookmyShow on Events and Theatre bookings using your IndusInd Bank Indulge Credit Card
+                                                        <a href="http://sapient.com/static/offertc-indusind-bank-indulge-credit-card-events-theatre/" target="_blank">Terms &amp; Conditions</a>
+                                                    </div>
+                                                    <div id="NCPA1113" class="offNote">
+                                                        <strong>Mastercard Offer For Centerstage Theatre Festival</strong>
+                                                        <br>
+                                                        MasterCard is offering its customers free tickets to go watch shows at NCPA. A maximum of 2 tickets are available for each show per eligible customer.
+                                                        <a href="http://sapient.com/static/mastercard-ncpa-Centerstage-offers/" target="_blank">Terms &amp; Conditions</a>
+                                                    </div>
+                                                    <div id="DTCN0612" class="offNote">
+                                                        <strong>DLF Emloyees offer.</strong>
+                                                        <br>
+                                                        DLF employees can avail a flat 20% discount on the Tickets amount for all shows
+                                                        at any DT Cinema throughout the week.
+                                                        <!--a href="http://sapient.com/static/terms/" target="_blank">Terms &amp; Conditions</a-->
+                                                    </div>
+                                                    <div id="AMEX0113" class="offNote">
+                                                        <strong>"Taste of Mumbai" - 20% discount is for AMEX cardholders</strong>
+                                                        <br>
+                                                        This offer is only available for Taste Of Mumbai event. If you have an AMEX card, please
+                                                        click here to avail the offer.
+                                                    </div>
+                                                    <div id="BEN101212" class="offNote">
+                                                        <strong>On Select Credit Cards</strong>
+                                                        <br>
+                                                        Buy 4 Get 5% off, Buy 8 Get 7.5% off, Buy 10 Get 10% off.
+                                                        <br>
+                                                        Get upto 10% off on the much awaited show, Ben10 at Delhi. All you need to do
+                                                        is click the 'Apply' button above. Note, this offer is valid only on Ben10 shows
+                                                        and only on ticket quantities of 4 and above.
+                                                        <a href="http://sapient.com/concerts/ben-10-delhi-tickets/" target="_blank">Terms &amp; Conditions</a>
+                                                    </div>
+                                                    <div id="CNPL0113" class="offNote">
+                                                        <strong>Buy 1 Get 50% off on the 2nd ticket</strong>
+                                                        <br>
+                                                        <br>
+                                                        Now Buy 1 Get 50% off on the 2nd ticket! for Cinepolis Ludhiana.
+                                                        To avail the offer click on the "Apply" button.
+                                                        <a href="http://sapient.com/static/offertc-cinepolis-50-per-off/" target="_blank">Terms &amp; Conditions</a>
+                                                    </div>
+                                                    <div id="CNPL0413" class="offNote">
+                                                        <strong>Buy 1 Get 50% off on the 2nd ticket</strong>
+                                                        <br>
+                                                        <br>
+                                                        Now Buy 1 Get 50% off on the 2nd ticket! for Cinepolis Mumbai.
+                                                        To avail the offer click on the "Apply" button.
+                                                        <a href="http://sapient.com/static/offertc-cinepolis-50-per-off/" target="_blank">Terms &amp; Conditions</a>
+                                                    </div>
+                                                    <div id="DTCNCR0211" class="offNote">
+                                                        <strong>Get small combo free per ticket.</strong>
+                                                        <br>
+                                                        Enjoy complimentary combo with every ticket purchased with Citibank Cards for a
+                                                        Sunday show (Maximum 2 combos per transaction). To avail the offer enter your
+                                                        Citibank Bank Credit/Debit Card number in the box above and click on the "Apply"
+                                                        button. If the user does not enter the Credit/Debit Card No. he/she would not be
+                                                        eligible for the offer.
+                                                        <a href="http://sapient.com/static/offertc-dt-combo/" target="_blank">Terms &amp; Conditions</a>
+                                                    </div>
+                                                    <div id="FUN1211" class="offNote">
+                                                        <strong>Get Rs.100 off on select Fun Cinemas.</strong>
+                                                        <br>
+                                                        Get Rs.100 off for Fun Cinemas. To avail the offer enter your Credit/Debit Card
+                                                        number in the box above and click on the "Apply" button. If the user does not
+                                                        enter the Credit/Debit Card No. he/she would not be eligible for the offer.
+                                                        <a href="http://sapient.com/static/terms/" target="_blank">Terms &amp; Conditions</a>
+                                                    </div>
+                                                    <div id="VODAFN0312" class="offNote">
+                                                        <strong>Vodafone Delight - Buy movie ticket and get 1 movie ticket free</strong>
+                                                        <br>
+                                                        Applicable for Vodafone Postpaid Customers in M&amp;G Circle. Call 56016 and follow the instructions.
+                                                        A 6 digit mcoupon will be sent shortly on SMS which you can use at BookMyShow to avail the discount.
+                                                        <a href="http://sapient.com/static/vodafone-delights-buy-1-movie-ticket-and-get-1-movie-ticket-free/" target="_blank">Terms &amp; Conditions</a>
+                                                    </div>
+                                                    <div id="VODAAP0214" class="offNote">
+                                                        <strong>Vodafone Tuesdays - Buy movie ticket and get 1 movie ticket free</strong>
+                                                        <br>
+                                                        Applicable for Vodafone Postpaid Customers in AP Circle. Call *777# and follow the instructions.
+                                                        A 6 digit mcoupon will be sent shortly on SMS which you can use at BookMyShow to avail the discount.
+                                                        <a href="http://sapient.com/static/vodafone-tuesdays-offers/" target="_blank">Terms &amp; Conditions</a>
+                                                    </div>
+                                                    <div id="VSPLAT1111" class="offNote">
+                                                        <strong>25% off on Platinum Cards</strong>
+                                                        <br>
+                                                        Now Get 25% Off on Visa Platinum Cards. To avail the offer enter your Visa Platinum
+                                                        Card number in the box above and click on the "Apply" button. If the user does not
+                                                        enter the Platinum Card No. he/she would not be eligible for the offer.
+                                                        <a href="http://sapient.com/static/offertc-visa-blockbuster-Platinum-Cards/" target="_blank">Terms &amp; Conditions</a>
+                                                    </div>
+                                                    <div id="DSCHBOGODB" class="offNote">
+                                                        <strong>Buy 1 Get 1 Free</strong>
+                                                        <br>
+                                                        Now Buy 1 Ticket and Get 1 Ticket Free for Deutsche Bank Platinum/Signature Debit Card
+                                                        holders.
+                                                        <a href="http://sapient.com/static/offertc-dsdc/" target="_blank">Terms &amp; Conditions</a>
+                                                    </div>
+                                                    <div id="AMEX081102" class="offNote">
+                                                        <strong>Get 5% off on Movie Tickets + 5x membership reward points</strong>
+                                                        <br>
+                                                        Now Get 5% off + 5x membership reward points on Movie Tickets for AMEX Card holders.
+                                                        <a href="http://sapient.com/static/amex-offer/" target="_blank">Terms &amp; Conditions</a>
+                                                    </div>
+                                                    <div id="HDFC1112" class="offNote">
+                                                        Get 10% off on your movie tickets booked with your HDFC Bank Credit Card.
+                                                        <a href="http://sapient.com/static/offertc-hdfc-10-percent-off/" target="_blank">Terms &amp; Conditions</a>
+                                                    </div>
+
+                                                    <div id="WP" class="offNote">
+                                                        <strong>WinPin Offer</strong>
+                                                        <br>
+                                                        If you have a Winpin, please click here to avail the offer.
+                                                        <br>
+                                                        WinPin is a 16 Digit promotional code that offers Free or Discounted Tickets to customers.
+                                                        If you have a WinPin, please enter the code in the box above to avail the offer.
+                                                    </div>
+                                                    <div id="MM" class="offNote">
+                                                        <strong>Movie Money</strong>
+                                                        <br>
+                                                        Have some Movie Money? Click here to apply the same.
+                                                        <br>
+                                                        Movie Money is a 16 Digit promotional code that offers Free or Discounted Tickets to customers.
+                                                        If you have Movie Money, please enter the code in the box above to avail the offer.
+                                                        <a href="http://sapient.com/static/moviemoneyhowto/" target="_blank">Terms &amp; Conditions</a>
+                                                    </div>
+                                                    <div id="IDEA1113" class="offNote">
+                                                        <strong>Idea Matinee Offer</strong>
+                                                        <br>
+                                                        Get 2 Free movie tickets/Buy 1 Get 1 Free movie ticket by invitation for select Idea customers.<br>
+                                                        Offer valid till 30th June 2014 or till stocks last. Terms &amp; Conditions.
+                                                        <a href="http://sapient.com/static/idea-movie-tickets-offer/" target="_blank">Terms &amp; Conditions</a>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--div id="dOffersSec" class="redeempnt" style="display: none;">
+                                   <div id="dOffers" class="fleft" style="display: none;">
+                                          <div class="fleft mr20">
+                                                <select id="cmbOffer" style="width: 184px;"></select>
+                                          </div>
+                                          <div class="fleft wt135 mr20">
+                                                <input id="txtOffCode" type="text" class="textbox" />
+                                          </div>
+                                          <a href="javascript:;" class="button yellow" onClick="fnApplyOffer(); _gaq.push(['_trackPageview', 'apply-offer']);">Apply Offer</a>
+                                   </div>
+                                   <div id="errDivOf" class="error mypagerr" style="display:none;"></div>
+                            </div-->
+                            <div class="blocks">
+                                <div>
+                                    <div id="dLotPts" class="dLotPts">
+                                        <div class="phead poffers" hidden="hidden">
+                                            <div class="checkbox availoff">
+                                                <label>
+                                                    <input id="chkLoyPoints" type="checkbox">
+                                                    Earn Loyalty points
+                                                </label>
+                                            </div>
+                                            <span class="caret-u-g" data-role="arrow"></span>
+                                            <img src="./Helper/pay-back.png" class="fright">
+                                        </div>
+                                        <!--<div class="dOfferGr brgrDiv" onClick="fnReqLogin({ from: 'loyalty' });">
+                                               <div></div>
+                                        </div>-->
+                                    </div>
+                                    <div id="dPoints" class="pcontent ocontent rewardp" style="display: none;">
+                                        <select id="cmbRP" class="fleft">
+                                            <option value="" selected="selected">Earn Reward Points</option>
+                                            <option value="imint">PAYBACK</option>
+                                        </select>
+
+                                        <div id="imintcant" class="fleft" style="margin-left: 10px; display: none;">
+                                            <input id="imint" type="text" maxlength="16" class="textbox" placeholder="Enter Number">
+                                        </div>
+
+                                        <div id="noteImint" class="offNote fl_100 Poffernotes">
+                                            <div class="payimp">Note:</div>
+                                            <ol>
+                                                <li>You can enter your PAYBACK number or mobile number associated with your PAYBACK account.</li>
+                                                <li>Post your transaction, your loyalty points will be added to your PAYBACK account.</li>
+                                            </ol>
+                                        </div>
+
+                                        <div id="errDivDPts" class="error mypagerr" style="display:none;"></div>
+                                    </div>
+                                    <!-- Discount Coupons and Offers Section - BEGIN -->
+                                </div>
+                            </div>
+
+
+                            <!-- zComm section -->
+                            <div id="dvUPrcdBtn" class="fl_100 proceed" style="margin-top: 10px; display: none;">
+                                <div class="fl_100">
+                                    <div id="errDivZcom" class="error mypagerr" style="display:none;"></div>
+                                </div>
+                                <div class="fl_100">
+                                    <label><input type="checkbox" id="chkPolicyZComm">&nbsp;&nbsp;Yes, I accept the <a href="http://sapient.com/static/terms/" target="_blank">Terms, Conditions &amp; Booking Policy.</a></label>
+                                    <div class="clear">&nbsp;</div>
+                                </div>
+                                <div id="lnkzCommPay" class="fl_100">
+                                    <a href="javascript:;" class="btn paybtn proff" onclick="fnZeroCommit();">Proceed</a>
+                                    <a href="javascript:;" class="canl" onclick="fnCanTr();">Cancel</a>
+                                </div>
+                            </div>
+                            <!-- Discount Text -->
+                            <div id="descOffer" class="offappl" style="display: none;">Your offer has been applied</div>
+                        </div>
+                    </div>
+
+
+                    <div class="box_300">
+                        <div class="fl_100 whitesec">
+                            <div class="odsum">
+                                <div class="podhead" id="dOrderSummary">
+                                    <div id="dTickets" class="rptr">
+                                        <h2 class="odhead">
+                                            Cart Summary
+                                        </h2><div class="sec-rptr nobod">
+                                            <div class="hdr">
+                                                <div class="fl_100">
+                                                    <div>
+                                                        <span>
+                                                            Product:
+                                                        </span><p>Sample product 110 (black)</p>
+                                                    </div>
+                                                </div>
+                                            </div><div class="mnbdy" style="display: block;">
+                                                <div class="sec">
+                                                    <div>
+                                                        <span>&nbsp;</span><p>
+                                                            &nbsp;
+                                                        </p>
+                                                    </div><div><p>&nbsp;</p></div><div></div><div></div><div></div><div></div>
+                                                </div>
+                                            </div>
+                                        </div><div class="btmtotal"><div class="ptotaln"><span>Total :</span> <span id="spnTicketAmt">Rs. 230.00</span></div> + (Internet handling fees : <span id="spnConv">Rs. 16.85</span> (incl. of Service Tax))</div>
+                                    </div><div id="osDisc" class="btmtotal" style="display: none;"><span> - Discount : <span id="spnDisc">Rs. 0.00</span></span></div>
+                                </div>
+                            </div>
+                            <div class="Gtotal"><span>Grand Total :</span><span class="dTotal">Rs. 246.85</span></div>
+                        </div>
+                        <div id="noteTerms" class="paynotes">
+                            <div class="payimp">Note:</div>
+                            <ol>
+                                <li>blah</li>
+                                <li>blah.</li>
+                            </ol>
+                        </div>
+                        <!--TIMER-->
+                        <div class="timeSec">
+                            <span id="dTimer" class="fl_100"><span id="spnTime">7:25</span> <span id="spnTag">mins</span> before session expires</span>
+                            <p>Your IP Address : 194.72.84.210</p>
+                        </div>
+                    </div>
+                </div>
+                <!--MAIN SEC ENDS-->
+                <div class="clear">&nbsp;</div>
+                <div class="clear">&nbsp;</div>
+                <!--FOOTER STARTS-->
+                <div class="box_960">
+                    <div class="box_940">
+                        <br>
+                        � Bigtree Entertainment Pvt. Ltd. | <a href="http://sapient.com/privacy/" target="_blank">Privacy Policy</a> | <a href="http://sapient.com/contactus/" target="_blank">Contact Us</a>
+                    </div>
+                </div>
+                <!--FOOTER ENDS-->
+                <div class="clear">&nbsp;</div>
+                <div class="clear">&nbsp;</div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var AppC                   =      "WEBIN";             // AppCode
+        var TID                           =      452488884;                 // TransactionID
+        var BID                           =      "W3AHUUC";           // BookingID
+        var SVC                           =      "QCBA";              // VenueCode
+        var SSID                   =      "19706";             // SessionID
+        var EC                     =      "";           // EventCode
+        var ETY                           =      "MT";         // EventType
+        var isETicket        =      "";           // Is E-Ticket
+        var strUserIP        =      "194.72.84.210";     // User's IP Address
+
+        var dcPaymentMode    =      "1";
+
+        var curDt                  =      "201406";
+        var blnAcceptName    =      false;
+
+        /* Added temporary for avoiding busy animation lag - will be resolved later */
+        function fnBusy(blnFlag) {
+            try {
+                fnCover(blnFlag);
+                if (blnFlag == true) {
+                    fnDoFloat("#dBsy").show();
+                } else {
+                    fnCover(false);
+                    jq("#dBsy").hide();
+                }
+            } catch (e) {
+                fnErr({ "fnName" : "fnBusy", "fnParams" : arguments, err : e });
+            }
+        }
+
+        function fnCover(blnFlag) {
+            try {
+                var objDiv;
+                if (jq("#dCover").length == 0) {
+                    objDiv = jq("<div />").attr("id", "dCover");
+                    objDiv.css({ background : "repeat scroll 0 0", backgroundImage : "url('/img/pay/t-bg.png')" });
+                    objDiv.css({ position : "absolute", zIndex : "2147483646" });
+                    objDiv.css({ top : "0px", left : "0px", width : "100%", height : jq(document).height() });
+                    jq("body").append(objDiv);
+                } else {
+                    objDiv = jq("#dCover");
+                    objDiv.css({ width : "100%", height : jq(document).height() });
+                }
+
+                if (blnFlag) {
+                    jq("#dCover").show();
+                    clearTimeout(fnCover.objTimer);
+                    fnCover.objTimer = setTimeout("fnCover(true);", 250);
+                } else {
+                    jq("#dCover").hide();
+                    clearTimeout(fnCover.objTimer);
+                }
+            } catch (e) {
+                fnErr({ "fnName" : "fnCover", "fnParams" : arguments, err : e });
+            }
+        }
+
+        /* Page Load Function */
+        fnPayLoad();
+
+        setTimeout(function(){var a=document.createElement("script");
+            var b=document.getElementsByTagName("script")[0];
+            a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0012/8616.js?"+Math.floor(new Date().getTime()/3600000);
+            a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+    </script>
+
+    <!-- Google Code for main list -->
+    <script type="text/javascript">
+        /* <![CDATA[ */
+        var google_conversion_id = 1047067205;
+        var google_conversion_label = "BAmyCOOe1wQQxfSj8wM";
+        var google_custom_params = window.google_tag_params;
+        var google_remarketing_only = true;
+        /* ]]> */
+    </script>
+    <script type="text/javascript" src="./Helper/conversion.js">
+    </script><iframe name="google_conversion_frame" title="Google conversion frame" width="300" height="13" src="./Helper/saved_resource.htm" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no">&lt;img height="1" width="1" border="0" alt="" src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/1047067205/?frame=0&amp;random=1402557901761&amp;cv=7&amp;fst=1402557901761&amp;num=1&amp;fmt=1&amp;label=BAmyCOOe1wQQxfSj8wM&amp;guid=ON&amp;u_h=1024&amp;u_w=1280&amp;u_ah=996&amp;u_aw=1280&amp;u_cd=24&amp;u_his=5&amp;u_tz=330&amp;u_java=true&amp;u_nplug=8&amp;u_nmime=13&amp;frm=0&amp;url=https%3A//sapient.com/payment/%3Fcid%3DQCBA%26sid%3D19706%26ety%3DMT&amp;ref=http%3A//sapient.com/buytickets/q-cinemas-whitefield-bangalore/cinema-bang-QCBA-MT/20140612" /&gt;</iframe>
+
+    <div id="dSignIn" style="display: none; left: 0px; position: absolute; top: 0px; width: 400px; z-index: 2147483647;"><div class="mainr callor"><div class="mainr callwhite"><div class="spacemain" id="mSignInDiv"><div class="fleft" id="fButton"><h3 style="margin:10px 0px 5px 75px;">Use Facebook to Sign in</h3><div id="fbLogin" class="fbkbutton" onclick="window.open(&#39;/fb/login/?secured=1&#39;,&#39;Login&#39;,&#39;height=500,width=700,scrollbars=yes&#39;);return false;"><div class="ic-fb scfbk"></div><div class="fbktxt">Log in with Facebook</div></div><div class="orlink fleft"></div><div class="circle fleft">OR</div></div><div class="signtab"><div class="fleft wt100"><input type="radio" name="rdSign" class="radio" id="signIn" onclick="SignIn.fnSignIn(true);" checked="checked"><span class="fleft">Sign in</span></div><div class="fleft wt165"><input type="radio" name="rdSign" class="radio" id="register" onclick="    SignIn.fnReg();"><span class="fleft">Create an Account</span></div></div><div class="signin fleft"><div class="ic-msg msg"></div><input type="text" id="iUserName" placeholder="Email"></div><div id="dEmailSuggest" class="fright mb20 mb10" style="display: none;"></div><div class="signin fleft" id="dSignPwd"><div class="ic-lock msg"></div><input type="password" id="iPwd" placeholder="Password"></div><div class="signin fleft" id="dRegPwd" style="display: none;"><div class="ic-lock msg"></div><input type="password" id="iPwdCon" placeholder="Confirm Password"></div><div style="clear:both;"></div><div id="dSignBtn"><a href="javascript:;" style="font-size:12px; display: none;" class="fleft mt5" id="iFPwd-temp" onclick="SignIn.fnFPwd();">Forgot Password?</a><a href="javascript:;" style="font-size: 12px;" class="fleft mt5" id="iRPwd" onclick="SignIn.fnRPwd();">Reset Password?</a><a href="javascript:;" onclick="SignIn.fnValLogIn();" id="iSignIn" class="button yellow btnsign">Sign In</a><a href="javascript:;" onclick="SignIn.fnClose({ callBack: false });" style="margin:5px 10px 0px 0px;" class="btnsign">Close</a></div><div class="fright" style="display:none;" id="ldng"><img alt="Loading.." id="Img1" src="./Helper/loader.gif"></div><div class="fleft" style="display:none;" id="Fldng"><img alt="Loading.." id="Img2" src="./Helper/loader.gif"></div><div class="fright" id="dRegBtn" style="display: none;"><a href="javascript:;" onclick="SignIn.fnValReg();" id="iReg" class="button yellow btnsign">Register</a><a href="javascript:;" onclick="SignIn.fnClose({ callBack: false });" style="margin:5px 10px 0px 0px;" class="btnsign">Close</a></div><div id="errDivFSI" class="error caerr" style="display:none;"></div><div class="clear">&nbsp;</div></div></div></div></div>
+</body>
+</html>
+

@@ -1,0 +1,26 @@
+﻿@model StoreOnLineWeb.Models.ItemViewModel
+@{
+    ViewBag.Title = "Product Detailed View";
+}
+
+<h2>Product Detailed View</h2>
+
+<table>
+<tr>
+<td>
+<table>
+<tr>
+<td><img src=@Model.ImagePath /></td>
+</tr>
+</table>
+</td>
+<td>
+<table>
+<tr><td>Name</td><td>@Model.Name</td></tr>
+<tr><td>Price</td><td>@Model.Price / @Model.Unit</td></tr>
+<tr><td>Description</td><td></td></tr>
+<tr><td colspan=2>@Model.Description</td></tr>
+</table>
+</td>
+</tr>
+</table>

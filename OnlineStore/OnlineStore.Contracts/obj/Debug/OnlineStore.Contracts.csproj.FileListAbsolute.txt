@@ -1,0 +1,14 @@
+C:\Users\Karthik\Desktop\NK\OnlineStore\OnlineStore\OnlineStore.Contracts\bin\Debug\OnlineStore.Contracts.dll
+C:\Users\Karthik\Desktop\NK\OnlineStore\OnlineStore\OnlineStore.Contracts\bin\Debug\OnlineStore.Contracts.pdb
+C:\Users\Karthik\Desktop\NK\OnlineStore\OnlineStore\OnlineStore.Contracts\obj\Debug\OnlineStore.Contracts.dll
+C:\Users\Karthik\Desktop\NK\OnlineStore\OnlineStore\OnlineStore.Contracts\obj\Debug\OnlineStore.Contracts.pdb
+C:\Users\Karthik\Desktop\NK\OnlineStore\OnlineStore\OnlineStore.Contracts\obj\Debug\OnlineStore.Contracts.csprojResolveAssemblyReference.cache
+C:\Users\agang1\Desktop\NK\OnlineStore\OnlineStore\OnlineStore.Contracts\bin\Debug\OnlineStore.Contracts.dll
+C:\Users\agang1\Desktop\NK\OnlineStore\OnlineStore\OnlineStore.Contracts\bin\Debug\OnlineStore.Contracts.pdb
+C:\Users\agang1\Desktop\NK\OnlineStore\OnlineStore\OnlineStore.Contracts\obj\Debug\OnlineStore.Contracts.csprojResolveAssemblyReference.cache
+C:\Users\agang1\Desktop\NK\OnlineStore\OnlineStore\OnlineStore.Contracts\obj\Debug\OnlineStore.Contracts.dll
+C:\Users\agang1\Desktop\NK\OnlineStore\OnlineStore\OnlineStore.Contracts\obj\Debug\OnlineStore.Contracts.pdb
+D:\OnlineStore\OnlineStore\OnlineStore.Contracts\bin\Debug\OnlineStore.Contracts.dll
+D:\OnlineStore\OnlineStore\OnlineStore.Contracts\bin\Debug\OnlineStore.Contracts.pdb
+D:\OnlineStore\OnlineStore\OnlineStore.Contracts\obj\Debug\OnlineStore.Contracts.dll
+D:\OnlineStore\OnlineStore\OnlineStore.Contracts\obj\Debug\OnlineStore.Contracts.pdb

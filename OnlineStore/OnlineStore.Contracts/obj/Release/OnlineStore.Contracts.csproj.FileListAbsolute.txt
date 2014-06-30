@@ -1,0 +1,4 @@
+D:\OnlineStore\OnlineStore\OnlineStore.Contracts\bin\Release\OnlineStore.Contracts.dll
+D:\OnlineStore\OnlineStore\OnlineStore.Contracts\bin\Release\OnlineStore.Contracts.pdb
+D:\OnlineStore\OnlineStore\OnlineStore.Contracts\obj\Release\OnlineStore.Contracts.dll
+D:\OnlineStore\OnlineStore\OnlineStore.Contracts\obj\Release\OnlineStore.Contracts.pdb

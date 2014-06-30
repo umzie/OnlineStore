@@ -1,0 +1,113 @@
+﻿@model  IEnumerable<OnlineStore.Models.ItemModel>
+@{
+    ViewBag.Title = "Store Online Purchase";
+    
+}
+<form method="get" action="/Store/Search">
+<table>
+    <tr>
+        <th>
+            <i>I am Looking for : </i>
+        </th>
+        <td>
+            <input type="text" id="kind" name="kind" style="width:400px">
+        </td>
+        <td>
+            <input type="submit" />
+        </td>
+    </tr>
+</table>
+</form>
+<br />
+<br />
+
+
+
+<table>
+    <tr>
+        <td>
+            <p class="button">
+                @Html.ActionLink("View My Basket", "Index", "Basket")
+            </p>
+        </td>
+        <td>
+            <p class="button">
+                @Html.ActionLink("View My Shopping List", "Index", "Basket")
+            </p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div id="addedShoppingList">
+            </div>
+        </td>
+    </tr>
+</table>
+<table id="tbroot" style="border:solid; border-width:thin; ">
+    <tr>
+        <td>
+            <table id="tbitems">
+                <thead >
+                    <tr>
+                        <th style="width:200px">
+                            Image
+                        </th>
+                        <th style="width:200px">
+                            ItemName
+                        </th>
+                        <th style="width:200px">
+                            Price
+                        </th>
+                        <th style="width:200px">
+                            Unit
+                        </th>
+                        <th>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <img height=40 width=40 src=@item.Image />
+                            </td>
+                            <td>
+                                <div id="@("lblitem_" + item.Id)">@item.ItemName</div>
+                                <input type="hidden" id="hdnItemId" value="@item.Id" />
+                            </td>
+                            <td>
+                                <div id="@("lblprice_" + item.Id)">@item.Price</div>
+                            </td>
+                            <td>
+                                <label id="@("lblunit_" + item.Id)">@item.Unit</label>
+                            </td>
+                            <td style="width:200px">
+                                <p class="button">
+                                    @Html.ActionLink("Add to Basket", "AddItem", "Basket", new { itemId = item.Id, quantity = 1 }, "")
+                                </p>
+                            </td>
+                            @*<td>
+                                    <input class="button" type="button" name="btnAddToShoppingList" id="btnAddToShoppingList" value="Add to Shopping List"
+                                            onclick="javascript:AddToShoppingList(@item.Id);" />
+                                </td>*@
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </td>
+    </tr>
+</table>
+
+
+<script type="text/javascript">
+    function AddToShoppingList(val) {
+        $.get('/Basket/AddToShoppingList', { itemId: val }, function (data) {
+            $('#addedShoppingList').html(data);
+
+        });
+    }
+</script>
+<script src="../../Scripts/jquery-1.6.2.js" type="text/javascript"></script>
+<script src="../../Scripts/jquery-1.6.2.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="../../Scripts/StoreOnline.js"></script>

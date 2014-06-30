@@ -1,0 +1,253 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MyCartDBModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="MyCartDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Baskets" EntityType="MyCartDBModel.Basket" />
+    <EntitySet Name="Customers" EntityType="MyCartDBModel.Customer" />
+    <EntitySet Name="Products" EntityType="MyCartDBModel.Product" />
+    <EntitySet Name="UnitMasters" EntityType="MyCartDBModel.UnitMaster" />
+    <EntitySet Name="Users" EntityType="MyCartDBModel.User" />
+    <AssociationSet Name="FK_Basket_Customer" Association="MyCartDBModel.FK_Basket_Customer">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="Basket" EntitySet="Baskets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Customer_User" Association="MyCartDBModel.FK_Customer_User">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Customer" EntitySet="Customers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_UnitMaster" Association="MyCartDBModel.FK_Product_UnitMaster">
+      <End Role="UnitMaster" EntitySet="UnitMasters" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <EntitySet Name="Items" EntityType="MyCartDBModel.Item" />
+    <EntitySet Name="Payments" EntityType="MyCartDBModel.Payment" />
+    <EntitySet Name="PaymentMasters" EntityType="MyCartDBModel.PaymentMaster" />
+    <AssociationSet Name="FK_Items_Basket" Association="MyCartDBModel.FK_Items_Basket">
+      <End Role="Basket" EntitySet="Baskets" />
+      <End Role="Item" EntitySet="Items" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Payment_Basket" Association="MyCartDBModel.FK_Payment_Basket">
+      <End Role="Basket" EntitySet="Baskets" />
+      <End Role="Payment" EntitySet="Payments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Payment_Customer" Association="MyCartDBModel.FK_Payment_Customer">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="Payment" EntitySet="Payments" />
+    </AssociationSet>
+    <EntitySet Name="ShoppingLists" EntityType="MyCartDBModel.ShoppingList" />
+    <EntitySet Name="sysdiagrams" EntityType="MyCartDBModel.sysdiagram" />
+    <AssociationSet Name="FK_ShoppingList_Customer" Association="MyCartDBModel.FK_ShoppingList_Customer">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="ShoppingList" EntitySet="ShoppingLists" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ShoppingList_Product" Association="MyCartDBModel.FK_ShoppingList_Product">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="ShoppingList" EntitySet="ShoppingLists" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Basket">
+    <Key>
+      <PropertyRef Name="BasketId" />
+    </Key>
+    <Property Name="BasketId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BasketName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="CustomerId" Type="Int32" />
+    <Property Name="CreatedDateTime" Type="DateTime" />
+    <NavigationProperty Name="Customer" Relationship="MyCartDBModel.FK_Basket_Customer" FromRole="Basket" ToRole="Customer" />
+    <Property Type="Decimal" Name="TotalPrice" Precision="18" Scale="0" />
+    <Property Type="Boolean" Name="IsCheckedOut" Nullable="false" />
+    <NavigationProperty Name="Items" Relationship="MyCartDBModel.FK_Items_Basket" FromRole="Basket" ToRole="Item" />
+    <NavigationProperty Name="Payments" Relationship="MyCartDBModel.FK_Payment_Basket" FromRole="Basket" ToRole="Payment" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="CustomerId" />
+    </Key>
+    <Property Name="CustomerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="CustomerName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Address" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+    <Property Name="Phone" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Email" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Baskets" Relationship="MyCartDBModel.FK_Basket_Customer" FromRole="Customer" ToRole="Basket" />
+    <NavigationProperty Name="User" Relationship="MyCartDBModel.FK_Customer_User" FromRole="Customer" ToRole="Users" />
+    <NavigationProperty Name="Payments" Relationship="MyCartDBModel.FK_Payment_Customer" FromRole="Customer" ToRole="Payment" />
+    <NavigationProperty Name="ShoppingLists" Relationship="MyCartDBModel.FK_ShoppingList_Customer" FromRole="Customer" ToRole="ShoppingList" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductName" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="UnitId" Type="Int32" />
+    <Property Name="Price" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="ImagePath" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="UnitMaster" Relationship="MyCartDBModel.FK_Product_UnitMaster" FromRole="Product" ToRole="UnitMaster" />
+    <NavigationProperty Name="ShoppingLists" Relationship="MyCartDBModel.FK_ShoppingList_Product" FromRole="Product" ToRole="ShoppingList" />
+  </EntityType>
+  <EntityType Name="UnitMaster">
+    <Key>
+      <PropertyRef Name="UnitId" />
+    </Key>
+    <Property Name="UnitId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UnitName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Products" Relationship="MyCartDBModel.FK_Product_UnitMaster" FromRole="UnitMaster" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="CreatedDateTime" Type="DateTime" />
+    <NavigationProperty Name="Customers" Relationship="MyCartDBModel.FK_Customer_User" FromRole="Users" ToRole="Customer" />
+  </EntityType>
+  <Association Name="FK_Basket_Customer">
+    <End Role="Customer" Type="MyCartDBModel.Customer" Multiplicity="0..1" />
+    <End Role="Basket" Type="MyCartDBModel.Basket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustomerId" />
+      </Principal>
+      <Dependent Role="Basket">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Customer_User">
+    <End Role="Users" Type="MyCartDBModel.User" Multiplicity="1" />
+    <End Role="Customer" Type="MyCartDBModel.Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Customer">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_UnitMaster">
+    <End Role="UnitMaster" Type="MyCartDBModel.UnitMaster" Multiplicity="0..1" />
+    <End Role="Product" Type="MyCartDBModel.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UnitMaster">
+        <PropertyRef Name="UnitId" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="UnitId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Item">
+    <Key>
+      <PropertyRef Name="ItemId" />
+    </Key>
+    <Property Type="Int32" Name="ItemId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="ProductId" Nullable="false" />
+    <Property Type="Int32" Name="Quantity" />
+    <Property Type="Decimal" Name="Price" Precision="18" Scale="0" />
+    <Property Type="Int32" Name="BasketId" />
+    <NavigationProperty Name="Basket" Relationship="MyCartDBModel.FK_Items_Basket" FromRole="Item" ToRole="Basket" />
+  </EntityType>
+  <EntityType Name="Payment">
+    <Key>
+      <PropertyRef Name="PaymentId" />
+    </Key>
+    <Property Type="Int32" Name="PaymentId" Nullable="false" />
+    <Property Type="Int32" Name="PaymentCard" Nullable="false" />
+    <Property Type="Int32" Name="BasketId" />
+    <Property Type="Int32" Name="CustomerId" />
+    <Property Type="DateTime" Name="PaymentDateTime" />
+    <NavigationProperty Name="Basket" Relationship="MyCartDBModel.FK_Payment_Basket" FromRole="Payment" ToRole="Basket" />
+    <NavigationProperty Name="Customer" Relationship="MyCartDBModel.FK_Payment_Customer" FromRole="Payment" ToRole="Customer" />
+  </EntityType>
+  <EntityType Name="PaymentMaster">
+    <Key>
+      <PropertyRef Name="PaymentMasterId" />
+    </Key>
+    <Property Type="Int32" Name="PaymentMasterId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="PaymentCardNumber" Nullable="false" />
+    <Property Type="Boolean" Name="IsValid" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Items_Basket">
+    <End Type="MyCartDBModel.Basket" Role="Basket" Multiplicity="0..1" />
+    <End Type="MyCartDBModel.Item" Role="Item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Basket">
+        <PropertyRef Name="BasketId" />
+      </Principal>
+      <Dependent Role="Item">
+        <PropertyRef Name="BasketId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Payment_Basket">
+    <End Type="MyCartDBModel.Basket" Role="Basket" Multiplicity="0..1" />
+    <End Type="MyCartDBModel.Payment" Role="Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Basket">
+        <PropertyRef Name="BasketId" />
+      </Principal>
+      <Dependent Role="Payment">
+        <PropertyRef Name="BasketId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Payment_Customer">
+    <End Type="MyCartDBModel.Customer" Role="Customer" Multiplicity="0..1" />
+    <End Type="MyCartDBModel.Payment" Role="Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustomerId" />
+      </Principal>
+      <Dependent Role="Payment">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ShoppingList">
+    <Key>
+      <PropertyRef Name="ShoppingListId" />
+    </Key>
+    <Property Type="Int32" Name="ShoppingListId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="ItemId" Nullable="false" />
+    <Property Type="Int32" Name="CustomerId" Nullable="false" />
+    <NavigationProperty Name="Customer" Relationship="MyCartDBModel.FK_ShoppingList_Customer" FromRole="ShoppingList" ToRole="Customer" />
+    <NavigationProperty Name="Product" Relationship="MyCartDBModel.FK_ShoppingList_Product" FromRole="ShoppingList" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Type="String" Name="name" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="principal_id" Nullable="false" />
+    <Property Type="Int32" Name="diagram_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="version" />
+    <Property Type="Binary" Name="definition" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_ShoppingList_Customer">
+    <End Type="MyCartDBModel.Customer" Role="Customer" Multiplicity="1" />
+    <End Type="MyCartDBModel.ShoppingList" Role="ShoppingList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustomerId" />
+      </Principal>
+      <Dependent Role="ShoppingList">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ShoppingList_Product">
+    <End Type="MyCartDBModel.Product" Role="Product" Multiplicity="1" />
+    <End Type="MyCartDBModel.ShoppingList" Role="ShoppingList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="ShoppingList">
+        <PropertyRef Name="ItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

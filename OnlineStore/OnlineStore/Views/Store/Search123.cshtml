@@ -1,0 +1,106 @@
+﻿@*@model  StoreOnLineWeb.Models.ItemModel[]
+@{
+    ViewBag.Title = "Store Online Purchase";
+    
+     //var webGrid = new WebGrid(source: Model,
+     //   rowsPerPage: 5,
+     //   canPage: true,
+     //   canSort: false);
+}
+<link href="../../Content/Web-GridStyles.css" rel="stylesheet" type="text/css" />
+
+<form method="get" action="/Store/Search">
+<table>
+<tr>
+<th><i>I am Looking for : </i></th><td><input type=text id="kind" name="kind"></td><td><input type=submit /></td></tr></table>
+</form>
+<br />
+<br />
+
+<table>
+<tr>
+<td><table>
+<thead>
+<tr>
+<td></td>
+<th>Image</th>
+<th>Item Name</th>
+<th>Price</th>
+<th>Unit</th>
+<th>Qty</th>
+<th></th>
+</tr></thead>
+<tbody>
+@foreach (var item in Model)
+{
+    <tr>
+    <td>@Html.ActionLink("Detail", "View", new { item.Id},null)</td>
+    <td><img height=40 width=40  src=@item.Image /></td>    
+    <td>@item.ItemName</td>
+    <td>@item.Price</td>
+    <td>@item.Unit</td>    
+    <td><input type="text" id="@item.Id" value=1  style="width:20px"/></td>
+    <td>
+    <a href=@Url.Action("Index","Store")>
+                    <img src=@Url.Content("../../Images/Button/add_on.gif") /></a>
+    @*<img src="../../Images/Button/add_on.gif" onclick="fun()" />*@</td>
+    </tr>    
+}
+<scri 
+fun
+</tbody>
+</table>
+</td>
+<td>
+<h3>Basket Items List</h3>
+<Input type=submit name="cmdCheckOut" value="Check Out" style="width:100px"></button>
+</td>
+</tr>
+</table>
+
+
+
+
+
+
+
+@*<div id="order-content">
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    @webGrid.GetHtml(
+                        headerStyle: "webgrid-header",
+                        footerStyle: "webgrid-footer",
+                        alternatingRowStyle: "webgrid-alternating-row",
+                        rowStyle: "webgrid-row-style",
+                        selectedRowStyle: "webgrid-selected-row",
+                        displayHeader: true,
+                        columns: webGrid.Columns(
+                            webGrid.Column(columnName: "Id", header: "Order #"),
+                            webGrid.Column(columnName: "ItemName", header: "Order Date"),
+                            webGrid.Column(columnName: "Price", header: "# Of Units"),
+                            webGrid.Column(columnName: "Unit", header: "Order Value ($)")))
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+*@
+
+@section Sidebar {
+    <div id="sidebar">
+        <p>
+        </p>
+        <h3>
+            Customer Related Services</h3>
+        <ul>
+            <li><a href="#">Call Customer</a></li>
+            <li><a href="#">Connect RDP</a></li>
+            <li><a href="#">Show Reports</a></li>
+            <li><a href="#">View Orders</a></li>
+            <li><a href="#">Finalize Reports</a></li>
+        </ul>
+    </div>
+    }
+*@

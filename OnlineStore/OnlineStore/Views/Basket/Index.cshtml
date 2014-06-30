@@ -1,0 +1,345 @@
+﻿@model OnlineStore.Models.HomeViewModel
+@{
+    ViewBag.Title = "My Basket";
+}
+
+@section Scripts
+{
+    <script type="text/JavaScript">
+
+        $(document).ready(function () {
+
+            $('#helpRegisterd').hover(
+                function () {
+                    //Mouse enters
+                    $('#tooltipReg').css("display", "block");
+                },
+            function () {
+
+                //Mouse leaves
+                $('#tooltipReg').css("display", "none");
+
+
+            });
+
+            $('#helpPickStore').hover(
+                function () {
+                    //Mouse enters
+                    $('#tooltipPick').css("display", "block");
+                },
+            function () {
+
+                //Mouse leaves
+                $('#tooltipPick').css("display", "none");
+
+
+            });
+
+            $(document).mousemove(function (event) {
+                var mx = event.pageX + 15;
+                var my = event.pageY + 15;
+                $('#tooltipReg').css("left", mx + "px").css("top", my + "px");
+                $('#tooltipPick').css("left", mx + "px").css("top", my + "px");
+
+            });
+
+        });
+
+    </script>
+}
+
+
+<script type="text/javascript">
+
+    $(function () {
+
+
+        $('input[name=delivery]').click(function () {
+
+            if ($('input[name=delivery]:checked').val() == "1") {
+
+                $('#dvRegAddr').show();
+                $('#dvPickStore').hide();
+
+            } else {
+                $('#dvPickStore').show();
+                $('#dvRegAddr').hide();
+
+            }
+
+        });
+
+        $('select[name=AddressType]').change(function () {
+
+            if ($('select[name=AddressType]').val() == "1") {
+
+                $('#RegAddrResidence').show();
+                $('#RegAddrOffice').hide();
+
+            }
+            else if ($('select[name=AddressType]').val() == "2") {
+                $('#RegAddrResidence').hide();
+                $('#RegAddrOffice').show();
+            } else {
+                $('#RegAddrResidence').hide();
+                $('#RegAddrOffice').hide();
+            }
+        });
+    });
+
+</script>
+
+<h2>
+    My Basket
+</h2>
+
+
+<fieldset>
+    <legend>HomeViewModel</legend>
+
+
+
+    <aside>
+        @using (Html.BeginForm())
+        {
+            <table border="1" cellspacing="5" cellpadding="5" width="400px">
+                <tr>
+                    <th>
+                        ItemName
+                    </th>
+                    <th>
+                        Price (each)
+                    </th>
+                    <th>
+                        Quantity
+                    </th>
+                    
+                </tr>
+                @if (Model != null)
+                {
+                    foreach (var item in Model.ItemModel)
+                    {
+                        <tr>
+                            <td>
+                                @Html.ActionLink(@item.ItemName, "Details", "Store", new { id = item.Id }, null)
+                            </td>
+                            <td>
+                                @item.Price
+                            </td>
+                            <td>
+                                @item.Quantity
+                            </td>
+                            
+                        </tr>
+                    }
+                    <tr>
+                        <td>
+                            Total Cost
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td id="cart-total">
+                            @Model.BasketViewModel.TotalCost
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @*<p class="button">
+                                    @Html.ActionLink("CheckOut", "Index", "Payment", new { totalAmount = @Model.BasketViewModel.TotalCost }, "")
+                                </p>*@
+                        </td>
+                    </tr>
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="3">
+                            There are 0 items in the basket.
+                        </td>
+                    </tr>
+                }
+            </table>
+        }
+    </aside>
+
+
+
+    <b>Ship To</b>
+    <table>
+
+        <tr>
+            <td>
+                <fieldset style="width: 30%">
+                    <legend>
+                        <h3>Shipping & Delivery</h3>
+                    </legend>
+
+                    <fieldset style="font-size: small; font-style: normal">
+                        <div style="margin-top: 5%">
+                            <table>
+                                <tr>
+                                    <td>@Html.RadioButton("delivery", "1", true) Deliver at registered address</td>
+                                    <td>
+                                        <img id="helpRegisterd" src="~/Images/info.jpg" alt="Information" width="15px" align="center" />
+                                        <div id="tooltipReg" class="tooltip">Select this option if you want to deliver to your registered address</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div id="dvRegAddr" style="margin-top: 5%">
+                                            <div id="selectAddrsType">
+                                                <table>
+                                                    <tr>
+                                                        <td>Choose Address:</td>
+                                                        <td>
+                                                            @Html.DropDownList("AddressType", new List<SelectListItem>
+                            {
+                                new SelectListItem{Text="Residence Address", Value="1",Selected = true},
+                                new SelectListItem{Text="Office Address", Value="2"}
+
+                            }, "[ Select ]")
+                                                        </td>
+                                                    </tr>
+                                                </table>
+
+                                            </div>
+                                            <fieldset>
+                                                <div id="RegAddrResidence" style="border: black; border: 1px; margin-top: 5%">
+                                                    <table style="border: 2px; border: blue">
+                                                        <tr>
+                                                            <td>Name:</td>
+                                                            <td>Quader Khan</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Address line 1:</td>
+                                                            <td>Building# 2, Flat# 202,1st C Main</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Address line 2:</td>
+                                                            <td>Koramangala 8th Block</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>City:</td>
+                                                            <td>Bangalore</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>State:</td>
+                                                            <td>Karnataka</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Pin Code:</td>
+                                                            <td>560095</td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                                <div id="RegAddrOffice" style="display: none; border: black; border: 1px; margin-top: 5%">
+                                                    <table style="border: 2px; border: blue">
+                                                        <tr>
+                                                            <td>Name:</td>
+                                                            <td>Quader Khan</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Address line 1:</td>
+                                                            <td>Sapient Consulting</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Address line 2:</td>
+                                                            <td>Salarpuria GR Tech Park</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Address line 3:</td>
+                                                            <td>6th Floor, VAYU  Block, Whitefield</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>City:</td>
+                                                            <td>Bangalore</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>State:</td>
+                                                            <td>Karnataka</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Pin Code:</td>
+                                                            <td>560066</td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.RadioButton("delivery", "2", false) Pickup at store</td>
+                                    <td>
+                                        <img id="helpPickStore" src="~/Images/info.jpg" alt="Information" width="15px" align="center" />
+                                    </td>
+                                    <div id="tooltipPick" class="tooltip">Select this option if you want to pick it from the store location</div>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div id="dvPickStore" style="display: none; margin-top: 5%">
+                                            <table style="border: 2px; border: blue">
+                                                <tr>
+                                                    <td>Choose Pickup Time:</td>
+                                                    <td>
+                                                        @Html.DropDownList("PickupTme", new List<SelectListItem>
+                        {
+                            new SelectListItem{Text="11 AM - 12 PM", Value="1"},
+                            new SelectListItem{Text="12 PM - 2 PM", Value="2"}
+
+                        }, "[ Select ]")
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <fieldset>
+                                                <div style="margin-top: 5%">
+                                                    <table>
+                                                        <tr style="margin-bottom: 5%">
+                                                            <td></td>
+                                                            <td></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Address line 1:</td>
+                                                            <td>Sapient Consulting</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Address line 2:</td>
+                                                            <td>Salarpuria GR Tech Park</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Address line 3:</td>
+                                                            <td>6th Floor, VAYU  Block, Whitefield</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>City:</td>
+                                                            <td>Bangalore</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>State:</td>
+                                                            <td>Karnataka</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Pin Code:</td>
+                                                            <td>560066</td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </fieldset>
+            </td>
+        </tr>
+
+    </table>
+    <p class="button">@Html.ActionLink("Pay Later", "Index", "PayLater", new { @transactionId = 54321 }, null)</p>
+    <p class="button">@Html.ActionLink("Pay Now", "Index", "PayNow")</p>
+
+    <p class="button">
+        @Html.ActionLink("Empty My Basket", "Empty", "Basket")
+    </p>
+
+</fieldset>

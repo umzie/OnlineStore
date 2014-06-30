@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="StoreAPIService.MyCartDBEntities">
+    <Position X="18.75" Y="0.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>EANAACAAABJIiIQAAAEAAAAAAhCQBAAAAiAAAAAEBQQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StoreAPIService.Basket">
+    <Position X="0.5" Y="0.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>BAUCAgEAAAhECAAAgAQAAAAAAAIBYJAiQCJCAAAVEAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StoreAPIService.Customer">
+    <Position X="14.5" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAQAChIAAAYFAQAAE6AUBEAABACAAAAYABQIAg=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StoreAPIService.Item">
+    <Position X="7.5" Y="0.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>VAxAAgAAAQABwgEAggAAAAQAAAAAAAAEACAAgAwBAAE=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StoreAPIService.Payment">
+    <Position X="12.5" Y="8.25" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>BAWAAgAAAAgggAAAAAwEEAQAAAACQBAARLAAAAAQAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StoreAPIService.PaymentMaster">
+    <Position X="4.25" Y="0.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABIAAAIAAAEAAoAAAABAABgAAAAAAQEAAQAAEA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StoreAPIService.Product">
+    <Position X="10.75" Y="0.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>MRgoAAAAAQAAQAEAAgAAgIAAAAAAAAAEQgAEAIgIAAI=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StoreAPIService.UnitMaster">
+    <Position X="0.5" Y="8.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>CBgAAAAAAIAAAAAAAAAAAAAAAAAAAIAAAAAEAAAIAAY=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StoreAPIService.User">
+    <Position X="3.5" Y="8.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAEQAAAAAQAAAEAIAQIEAAwUAAIBAIACAABAAAAAAAg=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StoreAPIService.Controllers.MyCartController">
+    <Position X="9.25" Y="8.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIQAAAAAAgAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\MyCartController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StoreAPIService.Controllers.UserController">
+    <Position X="6.75" Y="8.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAQAAAAAAAAAAAEAACAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\UserController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

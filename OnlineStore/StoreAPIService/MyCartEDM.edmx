@@ -1,0 +1,678 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MyCartDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="MyCartDBModelStoreContainer">
+          <EntitySet Name="Basket" EntityType="MyCartDBModel.Store.Basket" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Customer" EntityType="MyCartDBModel.Store.Customer" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Items" EntityType="MyCartDBModel.Store.Items" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Payment" EntityType="MyCartDBModel.Store.Payment" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PaymentMaster" EntityType="MyCartDBModel.Store.PaymentMaster" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Product" EntityType="MyCartDBModel.Store.Product" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ShoppingList" EntityType="MyCartDBModel.Store.ShoppingList" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="sysdiagrams" EntityType="MyCartDBModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UnitMaster" EntityType="MyCartDBModel.Store.UnitMaster" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Users" EntityType="MyCartDBModel.Store.Users" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Basket_Customer" Association="MyCartDBModel.Store.FK_Basket_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Basket" EntitySet="Basket" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_User" Association="MyCartDBModel.Store.FK_Customer_User">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Items_Basket" Association="MyCartDBModel.Store.FK_Items_Basket">
+            <End Role="Basket" EntitySet="Basket" />
+            <End Role="Items" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payment_Basket" Association="MyCartDBModel.Store.FK_Payment_Basket">
+            <End Role="Basket" EntitySet="Basket" />
+            <End Role="Payment" EntitySet="Payment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payment_Customer" Association="MyCartDBModel.Store.FK_Payment_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Payment" EntitySet="Payment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_UnitMaster" Association="MyCartDBModel.Store.FK_Product_UnitMaster">
+            <End Role="UnitMaster" EntitySet="UnitMaster" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShoppingList_Customer" Association="MyCartDBModel.Store.FK_ShoppingList_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="ShoppingList" EntitySet="ShoppingList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShoppingList_Product" Association="MyCartDBModel.Store.FK_ShoppingList_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ShoppingList" EntitySet="ShoppingList" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Basket">
+          <Key>
+            <PropertyRef Name="BasketId" />
+          </Key>
+          <Property Name="BasketId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="BasketName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CustomerId" Type="int" />
+          <Property Name="TotalPrice" Type="decimal" />
+          <Property Name="CreatedDateTime" Type="datetime" />
+          <Property Name="IsCheckedOut" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="CustomerName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="150" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Items">
+          <Key>
+            <PropertyRef Name="ItemId" />
+          </Key>
+          <Property Name="ItemId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="Price" Type="decimal" />
+          <Property Name="BasketId" Type="int" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="PaymentId" />
+          </Key>
+          <Property Name="PaymentId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PaymentCard" Type="int" Nullable="false" />
+          <Property Name="BasketId" Type="int" />
+          <Property Name="CustomerId" Type="int" />
+          <Property Name="PaymentDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PaymentMaster">
+          <Key>
+            <PropertyRef Name="PaymentMasterId" />
+          </Key>
+          <Property Name="PaymentMasterId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PaymentCardNumber" Type="bigint" Nullable="false" />
+          <Property Name="IsValid" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ProductName" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="UnitId" Type="int" />
+          <Property Name="Price" Type="decimal" Nullable="false" />
+          <Property Name="ImagePath" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="ShoppingList">
+          <Key>
+            <PropertyRef Name="ShoppingListId" />
+          </Key>
+          <Property Name="ShoppingListId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ItemId" Type="int" Nullable="false" />
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="UnitMaster">
+          <Key>
+            <PropertyRef Name="UnitId" />
+          </Key>
+          <Property Name="UnitId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UnitName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="CreatedDateTime" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_Basket_Customer">
+          <End Role="Customer" Type="MyCartDBModel.Store.Customer" Multiplicity="0..1" />
+          <End Role="Basket" Type="MyCartDBModel.Store.Basket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="Basket">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_User">
+          <End Role="Users" Type="MyCartDBModel.Store.Users" Multiplicity="1" />
+          <End Role="Customer" Type="MyCartDBModel.Store.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Items_Basket">
+          <End Role="Basket" Type="MyCartDBModel.Store.Basket" Multiplicity="0..1" />
+          <End Role="Items" Type="MyCartDBModel.Store.Items" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Basket">
+              <PropertyRef Name="BasketId" />
+            </Principal>
+            <Dependent Role="Items">
+              <PropertyRef Name="BasketId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payment_Basket">
+          <End Role="Basket" Type="MyCartDBModel.Store.Basket" Multiplicity="0..1" />
+          <End Role="Payment" Type="MyCartDBModel.Store.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Basket">
+              <PropertyRef Name="BasketId" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="BasketId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payment_Customer">
+          <End Role="Customer" Type="MyCartDBModel.Store.Customer" Multiplicity="0..1" />
+          <End Role="Payment" Type="MyCartDBModel.Store.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_UnitMaster">
+          <End Role="UnitMaster" Type="MyCartDBModel.Store.UnitMaster" Multiplicity="0..1" />
+          <End Role="Product" Type="MyCartDBModel.Store.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnitMaster">
+              <PropertyRef Name="UnitId" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="UnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShoppingList_Customer">
+          <End Role="Customer" Type="MyCartDBModel.Store.Customer" Multiplicity="1" />
+          <End Role="ShoppingList" Type="MyCartDBModel.Store.ShoppingList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="ShoppingList">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShoppingList_Product">
+          <End Role="Product" Type="MyCartDBModel.Store.Product" Multiplicity="1" />
+          <End Role="ShoppingList" Type="MyCartDBModel.Store.ShoppingList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="ShoppingList">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MyCartDBModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="MyCartDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Baskets" EntityType="MyCartDBModel.Basket" />
+          <EntitySet Name="Customers" EntityType="MyCartDBModel.Customer" />
+          <EntitySet Name="Products" EntityType="MyCartDBModel.Product" />
+          <EntitySet Name="UnitMasters" EntityType="MyCartDBModel.UnitMaster" />
+          <EntitySet Name="Users" EntityType="MyCartDBModel.User" />
+          <AssociationSet Name="FK_Basket_Customer" Association="MyCartDBModel.FK_Basket_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Basket" EntitySet="Baskets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_User" Association="MyCartDBModel.FK_Customer_User">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_UnitMaster" Association="MyCartDBModel.FK_Product_UnitMaster">
+            <End Role="UnitMaster" EntitySet="UnitMasters" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <EntitySet Name="Items" EntityType="MyCartDBModel.Item" />
+          <EntitySet Name="Payments" EntityType="MyCartDBModel.Payment" />
+          <EntitySet Name="PaymentMasters" EntityType="MyCartDBModel.PaymentMaster" />
+          <AssociationSet Name="FK_Items_Basket" Association="MyCartDBModel.FK_Items_Basket">
+            <End Role="Basket" EntitySet="Baskets" />
+            <End Role="Item" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payment_Basket" Association="MyCartDBModel.FK_Payment_Basket">
+            <End Role="Basket" EntitySet="Baskets" />
+            <End Role="Payment" EntitySet="Payments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payment_Customer" Association="MyCartDBModel.FK_Payment_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Payment" EntitySet="Payments" />
+          </AssociationSet>
+          <EntitySet Name="ShoppingLists" EntityType="MyCartDBModel.ShoppingList" />
+          <EntitySet Name="sysdiagrams" EntityType="MyCartDBModel.sysdiagram" />
+          <AssociationSet Name="FK_ShoppingList_Customer" Association="MyCartDBModel.FK_ShoppingList_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="ShoppingList" EntitySet="ShoppingLists" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShoppingList_Product" Association="MyCartDBModel.FK_ShoppingList_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="ShoppingList" EntitySet="ShoppingLists" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Basket">
+          <Key>
+            <PropertyRef Name="BasketId" />
+          </Key>
+          <Property Name="BasketId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BasketName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="CustomerId" Type="Int32" />
+          <Property Name="CreatedDateTime" Type="DateTime" />
+          <NavigationProperty Name="Customer" Relationship="MyCartDBModel.FK_Basket_Customer" FromRole="Basket" ToRole="Customer" />
+          <Property Type="Decimal" Name="TotalPrice" Precision="18" Scale="0" />
+          <Property Type="Boolean" Name="IsCheckedOut" Nullable="false" />
+          <NavigationProperty Name="Items" Relationship="MyCartDBModel.FK_Items_Basket" FromRole="Basket" ToRole="Item" />
+          <NavigationProperty Name="Payments" Relationship="MyCartDBModel.FK_Payment_Basket" FromRole="Basket" ToRole="Payment" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="CustomerName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Address" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Email" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Baskets" Relationship="MyCartDBModel.FK_Basket_Customer" FromRole="Customer" ToRole="Basket" />
+          <NavigationProperty Name="User" Relationship="MyCartDBModel.FK_Customer_User" FromRole="Customer" ToRole="Users" />
+          <NavigationProperty Name="Payments" Relationship="MyCartDBModel.FK_Payment_Customer" FromRole="Customer" ToRole="Payment" />
+          <NavigationProperty Name="ShoppingLists" Relationship="MyCartDBModel.FK_ShoppingList_Customer" FromRole="Customer" ToRole="ShoppingList" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="UnitId" Type="Int32" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ImagePath" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="UnitMaster" Relationship="MyCartDBModel.FK_Product_UnitMaster" FromRole="Product" ToRole="UnitMaster" />
+          <NavigationProperty Name="ShoppingLists" Relationship="MyCartDBModel.FK_ShoppingList_Product" FromRole="Product" ToRole="ShoppingList" />
+        </EntityType>
+        <EntityType Name="UnitMaster">
+          <Key>
+            <PropertyRef Name="UnitId" />
+          </Key>
+          <Property Name="UnitId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UnitName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Products" Relationship="MyCartDBModel.FK_Product_UnitMaster" FromRole="UnitMaster" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" />
+          <NavigationProperty Name="Customers" Relationship="MyCartDBModel.FK_Customer_User" FromRole="Users" ToRole="Customer" />
+        </EntityType>
+        <Association Name="FK_Basket_Customer">
+          <End Role="Customer" Type="MyCartDBModel.Customer" Multiplicity="0..1" />
+          <End Role="Basket" Type="MyCartDBModel.Basket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="Basket">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_User">
+          <End Role="Users" Type="MyCartDBModel.User" Multiplicity="1" />
+          <End Role="Customer" Type="MyCartDBModel.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_UnitMaster">
+          <End Role="UnitMaster" Type="MyCartDBModel.UnitMaster" Multiplicity="0..1" />
+          <End Role="Product" Type="MyCartDBModel.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnitMaster">
+              <PropertyRef Name="UnitId" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="UnitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="ItemId" />
+          </Key>
+          <Property Type="Int32" Name="ItemId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ProductId" Nullable="false" />
+          <Property Type="Int32" Name="Quantity" />
+          <Property Type="Decimal" Name="Price" Precision="18" Scale="0" />
+          <Property Type="Int32" Name="BasketId" />
+          <NavigationProperty Name="Basket" Relationship="MyCartDBModel.FK_Items_Basket" FromRole="Item" ToRole="Basket" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="PaymentId" />
+          </Key>
+          <Property Type="Int32" Name="PaymentId" Nullable="false" />
+          <Property Type="Int32" Name="PaymentCard" Nullable="false" />
+          <Property Type="Int32" Name="BasketId" />
+          <Property Type="Int32" Name="CustomerId" />
+          <Property Type="DateTime" Name="PaymentDateTime" />
+          <NavigationProperty Name="Basket" Relationship="MyCartDBModel.FK_Payment_Basket" FromRole="Payment" ToRole="Basket" />
+          <NavigationProperty Name="Customer" Relationship="MyCartDBModel.FK_Payment_Customer" FromRole="Payment" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="PaymentMaster">
+          <Key>
+            <PropertyRef Name="PaymentMasterId" />
+          </Key>
+          <Property Type="Int32" Name="PaymentMasterId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="PaymentCardNumber" Nullable="false" />
+          <Property Type="Boolean" Name="IsValid" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Items_Basket">
+          <End Type="MyCartDBModel.Basket" Role="Basket" Multiplicity="0..1" />
+          <End Type="MyCartDBModel.Item" Role="Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Basket">
+              <PropertyRef Name="BasketId" />
+            </Principal>
+            <Dependent Role="Item">
+              <PropertyRef Name="BasketId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payment_Basket">
+          <End Type="MyCartDBModel.Basket" Role="Basket" Multiplicity="0..1" />
+          <End Type="MyCartDBModel.Payment" Role="Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Basket">
+              <PropertyRef Name="BasketId" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="BasketId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payment_Customer">
+          <End Type="MyCartDBModel.Customer" Role="Customer" Multiplicity="0..1" />
+          <End Type="MyCartDBModel.Payment" Role="Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ShoppingList">
+          <Key>
+            <PropertyRef Name="ShoppingListId" />
+          </Key>
+          <Property Type="Int32" Name="ShoppingListId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ItemId" Nullable="false" />
+          <Property Type="Int32" Name="CustomerId" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="MyCartDBModel.FK_ShoppingList_Customer" FromRole="ShoppingList" ToRole="Customer" />
+          <NavigationProperty Name="Product" Relationship="MyCartDBModel.FK_ShoppingList_Product" FromRole="ShoppingList" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Type="String" Name="name" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="principal_id" Nullable="false" />
+          <Property Type="Int32" Name="diagram_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="version" />
+          <Property Type="Binary" Name="definition" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_ShoppingList_Customer">
+          <End Type="MyCartDBModel.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="MyCartDBModel.ShoppingList" Role="ShoppingList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="ShoppingList">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShoppingList_Product">
+          <End Type="MyCartDBModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="MyCartDBModel.ShoppingList" Role="ShoppingList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="ShoppingList">
+              <PropertyRef Name="ItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MyCartDBModelStoreContainer" CdmEntityContainer="MyCartDBEntities">
+          <EntitySetMapping Name="Baskets">
+            <EntityTypeMapping TypeName="MyCartDBModel.Basket">
+              <MappingFragment StoreEntitySet="Basket">
+                <ScalarProperty Name="IsCheckedOut" ColumnName="IsCheckedOut" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="BasketId" ColumnName="BasketId" />
+                <ScalarProperty Name="BasketName" ColumnName="BasketName" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="MyCartDBModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="MyCartDBModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UnitMasters">
+            <EntityTypeMapping TypeName="MyCartDBModel.UnitMaster">
+              <MappingFragment StoreEntitySet="UnitMaster">
+                <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="MyCartDBModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Items">
+            <EntityTypeMapping TypeName="MyCartDBModel.Item">
+              <MappingFragment StoreEntitySet="Items">
+                <ScalarProperty Name="BasketId" ColumnName="BasketId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payments">
+            <EntityTypeMapping TypeName="MyCartDBModel.Payment">
+              <MappingFragment StoreEntitySet="Payment">
+                <ScalarProperty Name="PaymentDateTime" ColumnName="PaymentDateTime" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="BasketId" ColumnName="BasketId" />
+                <ScalarProperty Name="PaymentCard" ColumnName="PaymentCard" />
+                <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentMasters">
+            <EntityTypeMapping TypeName="MyCartDBModel.PaymentMaster">
+              <MappingFragment StoreEntitySet="PaymentMaster">
+                <ScalarProperty Name="IsValid" ColumnName="IsValid" />
+                <ScalarProperty Name="PaymentCardNumber" ColumnName="PaymentCardNumber" />
+                <ScalarProperty Name="PaymentMasterId" ColumnName="PaymentMasterId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ShoppingLists">
+            <EntityTypeMapping TypeName="MyCartDBModel.ShoppingList">
+              <MappingFragment StoreEntitySet="ShoppingList">
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="ShoppingListId" ColumnName="ShoppingListId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="MyCartDBModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="MyCartEDM">
+        <EntityTypeShape EntityType="MyCartDBModel.Basket" Width="1.5" PointX="5.25" PointY="1.125" Height="2.7494921875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyCartDBModel.Customer" Width="1.5" PointX="3" PointY="1" Height="2.5571907552083326" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyCartDBModel.Product" Width="1.5" PointX="3" PointY="5" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyCartDBModel.UnitMaster" Width="1.5" PointX="0.75" PointY="5.375" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyCartDBModel.User" Width="1.5" PointX="0.75" PointY="1.25" Height="1.9802864583333335" IsExpanded="true" />
+        <AssociationConnector Association="MyCartDBModel.FK_Basket_Customer" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="2.49974609375" />
+          <ConnectorPoint PointX="5.25" PointY="2.49974609375" />
+        </AssociationConnector>
+        <AssociationConnector Association="MyCartDBModel.FK_Customer_User" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="2.2401432291666667" />
+          <ConnectorPoint PointX="3" PointY="2.2401432291666667" />
+        </AssociationConnector>
+        <AssociationConnector Association="MyCartDBModel.FK_Product_UnitMaster" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="6.172841796875" />
+          <ConnectorPoint PointX="3" PointY="6.172841796875" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="MyCartDBModel.Item" Width="1.5" PointX="7.5" PointY="3.875" Height="2.1725878906249991" />
+        <EntityTypeShape EntityType="MyCartDBModel.Payment" Width="1.5" PointX="7.5" PointY="0.75" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="MyCartDBModel.PaymentMaster" Width="1.5" PointX="5.375" PointY="8.125" Height="1.5956835937499996" />
+        <AssociationConnector Association="MyCartDBModel.FK_Items_Basket" >
+          <ConnectorPoint PointX="6.75" PointY="3.8744921875" />
+          <ConnectorPoint PointX="7.125" PointY="4.2494921875" />
+          <ConnectorPoint PointX="7.125" PointY="3.5" />
+          <ConnectorPoint PointX="7.5" PointY="3.875" />
+        </AssociationConnector>
+        <AssociationConnector Association="MyCartDBModel.FK_Payment_Basket" >
+          <ConnectorPoint PointX="6.75" PointY="2.1199446614583337" />
+          <ConnectorPoint PointX="7.5" PointY="2.1199446614583337" />
+        </AssociationConnector>
+        <AssociationConnector Association="MyCartDBModel.FK_Payment_Customer" >
+          <ConnectorPoint PointX="4.5" PointY="1.03125" />
+          <ConnectorPoint PointX="7.5" PointY="1.03125" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="MyCartDBModel.ShoppingList" Width="1.5" PointX="5.25" PointY="5.25" Height="1.9802864583333317" />
+        <EntityTypeShape EntityType="MyCartDBModel.sysdiagram" Width="1.5" PointX="7.375" PointY="7.75" Height="1.9802864583333317" />
+        <AssociationConnector Association="MyCartDBModel.FK_ShoppingList_Customer" >
+          <ConnectorPoint PointX="4.5" PointY="3.941793619791667" />
+          <ConnectorPoint PointX="4.875" PointY="4.3167936197916674" />
+          <ConnectorPoint PointX="4.875" PointY="6.2401432291666659" />
+          <ConnectorPoint PointX="5.25" PointY="6.2401432291666659" />
+        </AssociationConnector>
+        <AssociationConnector Association="MyCartDBModel.FK_ShoppingList_Product" >
+          <ConnectorPoint PointX="4.5" PointY="5.6825716145833329" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="5.682571614583332" />
+          <ConnectorPoint PointX="4.958333333333333" PointY="5.6825716145833329" />
+          <ConnectorPoint PointX="5.25" PointY="5.6825716145833329" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

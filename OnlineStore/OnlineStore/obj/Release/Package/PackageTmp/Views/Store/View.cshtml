@@ -1,0 +1,39 @@
+﻿@model OnlineStore.Models.ItemViewModel
+@{
+    ViewBag.Title = "Product Detailed View";
+}
+
+<h2>Product Detailed View</h2>
+
+<table>
+<tr>
+<td>
+<table>
+<tr>
+<td><img src=@Model.ImagePath /></td>
+</tr>
+</table>
+</td>
+<td>
+<table>
+<tr><td>Name</td><td><div id="div_item">@Model.Name</div></td></tr>
+<tr><td>Price</td><td><div id="div_price">@Model.Price</div></td></tr>
+
+<tr><td>Quantity</td><td><table><tr><td>
+<div style='float:left'><input type='button' name='btnMinusQty' id='btnMinusQty' value='-' /></div></td><td>
+<div id="div_qty" style='float:left;width:50px;' align='center'>1</div></td><td>
+<div style="float:left"><input type='button' name='btnAddQty' id='btnAddQty' value='+' /></div></td></tr></table>
+</td>
+</tr>
+
+<tr><td>Unit</td><td><div id="div_unit")>@Model.Unit</div></tr>
+<tr><td>Description</td><td></td></tr>
+<tr><td colspan=2>@Model.Description</td></tr>
+<tr><td colspan=2 align="right"><input type='button' name='btnBack' id='btnBack' value='     Back     '  onclick="javascript:history.back()" /><input type='button' name='btnAddCart' id='btnAddCart' value='Add to Cart'  /> </td></tr>
+
+</table>
+</td>
+</tr>
+</table>
+<input type='hidden' id="hid_Id" value=@Model.Id />
+<script type="text/javascript" src="../../Scripts/StoreOnline.js"></script>
