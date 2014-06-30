@@ -11,6 +11,7 @@ using System.Net.Http.Headers;
 
 namespace OnlineStoreProvider
 {
+//Test comment
     public class AccountManager : IAccountManager
     {
         public AccountManager()
