@@ -6,6 +6,7 @@ using OnlineStore.Contracts;
 
 namespace OnlineStore.Common
 {
+    //Another one of my comments
     public interface IBasketManager
     {
         void AddItem(Basket addItem);
